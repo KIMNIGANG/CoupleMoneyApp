@@ -1,0 +1,12 @@
+{
+  "name": "CoupleMoneyApp",
+  "displayName": "CoupleMoneyApp",
+  "expo": {
+    "name": "CoupleMoneyApp",
+    "slug": "CoupleMoneyApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
