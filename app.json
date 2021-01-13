@@ -3,10 +3,18 @@
   "displayName": "CoupleMoneyApp",
   "expo": {
     "name": "CoupleMoneyApp",
+    "android": {
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-2841796582864445~1350582836"
+      }
+    },
+    "ios": {
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-2841796582864445~3374110944"
+      }
+    },
     "slug": "CoupleMoneyApp",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"]
   }
 }
