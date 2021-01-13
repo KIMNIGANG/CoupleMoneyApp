@@ -10,8 +10,9 @@ import {
 import { Actions } from "react-native-router-flux";
 
 import Swiper from "react-native-swiper";
-import { List } from "../list/list";
-import { MainView } from "../main_view/main_view";
+import { FormButton } from "./form_button";
+import { List } from "./list";
+import { MainView } from "./main_view";
 
 export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
   const logOut = () => {
@@ -37,11 +38,10 @@ export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
         <Button
           title="login"
           onPress={() => {
-            Actions.Login();
+            Actions.LoginScreen();
           }}
-        >
-          login
-        </Button>
+        />
+        <FormButton buttonTitle="Logout" />
       </View>
     </Swiper>
   );

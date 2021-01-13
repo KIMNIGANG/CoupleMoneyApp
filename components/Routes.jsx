@@ -1,7 +1,8 @@
 import React from "react";
 import { Router, Scene } from "react-native-router-flux";
-import { Main } from "../main/main";
-import { Login } from "../login/login";
+import { Main } from "./main";
+import { LoginScreen } from "./login_screen";
+import { SignupScreen } from "./signup_screen";
 
 const Routes = () => (
   <Router>
@@ -14,9 +15,15 @@ const Routes = () => (
         initial={true}
       />
       <Scene //
-        key="Login"
-        component={Login}
-        title="Login"
+        key="LoginScreen"
+        component={LoginScreen}
+        title="LoginScreen"
+        hideNavBar={true}
+      />
+      <Scene
+        key="SignupScreen"
+        component={SignupScreen}
+        title="SignupScreen"
         hideNavBar={true}
       />
     </Scene>

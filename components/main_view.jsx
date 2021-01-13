@@ -1,8 +1,8 @@
 import React from "react";
 import { AppRegistry, ScrollView, StyleSheet, Text, View } from "react-native";
-import { Editor } from "../editor/editor";
-import { List } from "../list/list";
-import { ListHeader } from "../list_header/list_header";
+import { Editor } from "./editor";
+import { List } from "./list";
+import { ListHeader } from "./list_header";
 
 export const MainView = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
   return (

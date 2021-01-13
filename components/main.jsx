@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import uuid from "react-native-uuid";
-import { Slider } from "../slider/slider";
+import { Slider } from "./slider";
 
 export const Main = () => {
   const [turn1, setTurn1] = useState(0);
