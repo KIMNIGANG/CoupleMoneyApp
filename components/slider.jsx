@@ -7,7 +7,6 @@ import {
   Text,
   View,
 } from "react-native";
-import { Actions } from "react-native-router-flux";
 import Swiper from "react-native-swiper";
 import { MainView } from "./main_view";
 
@@ -17,7 +16,7 @@ export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
   };
 
   return (
-    <Swiper showsButtons={true} showsButtons={false}>
+    <Swiper showsButtons={false}>
       <View style={styles.slide1}>
         <MainView //
           turn1={turn1}
@@ -32,12 +31,7 @@ export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
       </View>
       <View style={styles.slide3}>
         <Text style={styles.text}>And simple</Text>
-        <Button
-          title="login"
-          onPress={() => {
-            Actions.LoginScreen();
-          }}
-        />
+        <Button title="login" />
       </View>
     </Swiper>
   );
