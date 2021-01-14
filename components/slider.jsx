@@ -8,10 +8,7 @@ import {
   View,
 } from "react-native";
 import { Actions } from "react-native-router-flux";
-
 import Swiper from "react-native-swiper";
-import { FormButton } from "./form_button";
-import { List } from "./list";
 import { MainView } from "./main_view";
 
 export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
@@ -41,7 +38,6 @@ export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
             Actions.LoginScreen();
           }}
         />
-        <FormButton buttonTitle="Logout" />
       </View>
     </Swiper>
   );
