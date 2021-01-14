@@ -68,3 +68,4 @@ firebase.json
 ios/GoogleService-Info.plist
 .env
 android/google-services.json
+App.jsx
