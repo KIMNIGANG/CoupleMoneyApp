@@ -9,16 +9,17 @@ import {
 } from "react-native";
 
 import firebase from "firebase";
+import { addToList } from "../../service/addToList";
 
 export const Editor = ({ handleAdd }) => {
   const [money, setMoney] = useState();
 
   const submit = (value) => {
-    const data = value;
-    if (data <= 0) {
+    if (value <= 0) {
       return;
     }
-    handleAdd(data);
+    handleAdd(value);
+    addToList(value);
   };
 
   const onChanged = () => {
