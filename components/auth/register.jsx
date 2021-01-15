@@ -3,11 +3,14 @@ import { Button, StyleSheet, View } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
 import firebase from "firebase";
+import "firebase/firestore";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const listLength = 0;
+  const moneyList = [];
 
   const onSignUp = () => {
     firebase
@@ -21,6 +24,8 @@ export const Register = () => {
           .set({
             name,
             email,
+            listLength,
+            moneyList,
           });
         console.warn(result);
       })
