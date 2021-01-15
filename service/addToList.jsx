@@ -4,11 +4,6 @@ import "firebase/firestore";
 import uuid from "react-native-uuid";
 
 export const addToList = (money) => {
-  //   const list = firebase
-  //     .firestore()
-  //     .collection("users")
-  //     .doc(firebase.auth().currentUser.uid).moneyList;
-  //   list.update(firebase.firestore.FieldValue.arrayUnion(money));
   firebase
     .firestore()
     .collection("users")

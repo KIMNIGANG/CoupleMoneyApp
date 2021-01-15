@@ -14,13 +14,24 @@ export const getMoneyList = (moneyList, setMoneyList) => {
         console.log("No such document!");
       } else {
         console.log(doc.data().moneyList);
-        setMoneyList([]);
+        const list = [];
         for (let i = 0; i < doc.data().moneyList.length; i++) {
           console.log(doc.data().moneyList);
-          setMoneyList([
-            ...moneyList,
-            { money: doc.data().moneyList.i, key: i },
-          ]);
+          list[i] = {
+            money: doc.data().moneyList[i].money,
+            key: doc.data().moneyList[i].key,
+          };
+          if (i == doc.data().moneyList.length - 1) {
+            setMoneyList(list);
+          }
+
+          // setMoneyList([
+          //   ...moneyList,
+          //   {
+          //     money: doc.data().moneyList[i].money,
+          //     key: doc.data().moneyList[i].key,
+          //   },
+          // ]);
         }
       }
     })
