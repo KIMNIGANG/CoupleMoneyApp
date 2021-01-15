@@ -8,6 +8,8 @@ import {
   View,
 } from "react-native";
 
+import firebase from "firebase";
+
 export const Editor = ({ handleAdd }) => {
   const [money, setMoney] = useState();
 
@@ -32,6 +34,14 @@ export const Editor = ({ handleAdd }) => {
       }
     }
     submit(newText);
+
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(firebase.auth().currentUser.uid)
+      .set({
+        newText,
+      });
   };
 
   return (

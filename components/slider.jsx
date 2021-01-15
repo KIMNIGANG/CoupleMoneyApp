@@ -8,12 +8,33 @@ import {
   View,
 } from "react-native";
 import Swiper from "react-native-swiper";
-import { MainView } from "./main_view";
+import { MainView } from "./slide1/main_view";
+import firebase from "firebase";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
   const logOut = () => {
     Actions.Login();
   };
+
+  const [name, setName] = useState("");
+
+  const userName = firebase
+    .firestore()
+    .collection("users")
+    .doc(firebase.auth().currentUser.uid)
+    .get()
+    .then((doc) => {
+      if (!doc.exists) {
+        console.log("No such document!");
+      } else {
+        setName(doc.data().name);
+      }
+    })
+    .catch((err) => {
+      console.log("Error getting document", err);
+    });
 
   return (
     <Swiper showsButtons={false}>
@@ -30,8 +51,8 @@ export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
         <Text style={styles.text}>Beautiful</Text>
       </View>
       <View style={styles.slide3}>
-        <Text style={styles.text}>And simple</Text>
-        <Button title="login" />
+        <Text style={styles.text}>{name} And simple</Text>
+        <Button title="test" />
       </View>
     </Swiper>
   );

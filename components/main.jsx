@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import uuid from "react-native-uuid";
+import { getMoneyList } from "../service/get_moneyList";
 import { Slider } from "./slider";
 
 export const Main = () => {
@@ -20,16 +21,8 @@ export const Main = () => {
   ]);
 
   useEffect(() => {
-    let whole = 0;
-    user1.forEach((item) => {
-      whole += item.money;
-    });
-    setSum(whole);
-
-    let turn = sum / 10000;
-    turn = turn.toFixed(1);
-    setTurn1(turn);
-  }, [setTurn1]);
+    getMoneyList(user1, setUser1);
+  }, [getMoneyList]);
 
   const turnChange = () => {
     let turn = sum / 10000;
