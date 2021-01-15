@@ -10,13 +10,13 @@ export const MainView = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
       <View style={styles.listContainer}>
         <ListHeader turn1={turn1} />
         <View style={styles.listFlexContainer}>
-          <ScrollView>
+          <ScrollView style={styles.userList}>
             {user1.map((item) => (
               <List key={item.key} item={item} handleDelete={handleDelete} />
             ))}
           </ScrollView>
           <View style={styles.wall} />
-          <ScrollView>
+          <ScrollView style={styles.userList}>
             {user2.map((item) => (
               <List key={item.key} item={item} handleDelete={handleDelete} />
             ))}
@@ -50,6 +50,9 @@ const styles = StyleSheet.create({
   },
   editor: {
     flex: 1,
+  },
+  userList: {
+    width: "100%",
   },
   wall: {
     marginTop: "5%",

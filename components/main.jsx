@@ -7,12 +7,7 @@ import { Slider } from "./slider";
 export const Main = () => {
   const [turn1, setTurn1] = useState(0);
   const [sum, setSum] = useState(0);
-  const [user1, setUser1] = useState([
-    { money: 1000, key: uuid.v4() },
-    { money: 1200, key: uuid.v4() },
-    { money: 1030, key: uuid.v4() },
-    { money: 1040, key: uuid.v4() },
-  ]);
+  const [user1, setUser1] = useState([]);
   const [user2, setUser2] = useState([
     { money: 1000, key: uuid.v4() },
     { money: 1200, key: uuid.v4() },
