@@ -1,8 +1,14 @@
 import React from "react";
 import firebase from "firebase";
 import "firebase/firestore";
+import uuid from "react-native-uuid";
 
 export const addToList = (money) => {
+  //   const list = firebase
+  //     .firestore()
+  //     .collection("users")
+  //     .doc(firebase.auth().currentUser.uid).moneyList;
+  //   list.update(firebase.firestore.FieldValue.arrayUnion(money));
   firebase
     .firestore()
     .collection("users")
@@ -12,7 +18,18 @@ export const addToList = (money) => {
       if (!doc.exists) {
         console.log("No such document!");
       } else {
-        const i = doc.data().moneyList.length + 1;
+        const array = doc.data().moneyList;
+
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(firebase.auth().currentUser.uid)
+          .update({
+            moneyList: firebase.firestore.FieldValue.arrayUnion({
+              money,
+              key: uuid.v4(),
+            }),
+          });
       }
     })
     .catch((err) => {
