@@ -1,41 +1,9 @@
 import React from "react";
-import {
-  AppRegistry,
-  Button,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import Swiper from "react-native-swiper";
 import { MainView } from "./slide1/main_view";
-import firebase from "firebase";
-import { useEffect } from "react";
-import { useState } from "react";
 
 export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
-  const logOut = () => {
-    Actions.Login();
-  };
-
-  const [name, setName] = useState("");
-
-  const userName = firebase
-    .firestore()
-    .collection("users")
-    .doc(firebase.auth().currentUser.uid)
-    .get()
-    .then((doc) => {
-      if (!doc.exists) {
-        console.log("No such document!");
-      } else {
-        setName(doc.data().name);
-      }
-    })
-    .catch((err) => {
-      console.log("Error getting document", err);
-    });
-
   return (
     <Swiper showsButtons={false}>
       <View style={styles.slide1}>
@@ -51,7 +19,7 @@ export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
         <Text style={styles.text}>Beautiful</Text>
       </View>
       <View style={styles.slide3}>
-        <Text style={styles.text}>{name} And simple</Text>
+        <Text style={styles.text}>And simple</Text>
         <Button title="test" />
       </View>
     </Swiper>
@@ -63,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: "10%",
     flexDirection: "row",
-    backgroundColor: "#9DD6EB",
+    backgroundColor: "white",
   },
   slide2: {
     flex: 1,

@@ -10,10 +10,14 @@ export const Main = () => {
   const [sum, setSum] = useState(0);
   const [user1, setUser1] = useState([]);
   const [user2, setUser2] = useState([
-    { money: 1000, key: uuid.v4() },
-    { money: 120000, key: uuid.v4() },
-    { money: 1.3, key: uuid.v4() },
-    { money: 1040, key: uuid.v4() },
+    { money: 1000, key: uuid.v4(), category: "food" },
+    { money: 120000, key: uuid.v4(), category: "etc" },
+    { money: 1.3, key: uuid.v4(), category: "house" },
+    { money: 1040, key: uuid.v4(), category: "restaruant" },
+    { money: 1040, key: uuid.v4(), category: "play" },
+    { money: 1040, key: uuid.v4(), category: "food" },
+    { money: 1040, key: uuid.v4(), category: "food" },
+    { money: 1040, key: uuid.v4(), category: "food" },
   ]);
 
   useEffect(() => {
@@ -31,8 +35,8 @@ export const Main = () => {
     setSum(whole);
   };
 
-  const handleAdd = (money) => {
-    setUser1([...user1, { money, key: uuid.v4() }]);
+  const handleAdd = (money, category) => {
+    setUser1([...user1, { money, category, key: uuid.v4() }]);
     sumChange(Number(money));
     turnChange();
   };
@@ -62,23 +66,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  sliderContainer: {
-    flex: 2.5,
-  },
-
-  contentContainer: {
-    flex: 1,
-    backgroundColor: "lightblue",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  editorContainer: {
-    flex: 1,
-    width: "100%",
-    backgroundColor: "#8e8989",
     alignItems: "center",
     justifyContent: "center",
   },

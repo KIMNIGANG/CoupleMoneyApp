@@ -4,7 +4,26 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const List = ({ item, handleDelete }) => {
   const onDelete = () => {
+    console.log(item.category);
     handleDelete(item);
+  };
+
+  const getLink = () => {
+    switch (item.category) {
+      case "food":
+        return require("../../img/food.png");
+      case "play":
+        return require("../../img/play.png");
+      case "house":
+        return require("../../img/house.png");
+      case "restaruant":
+        return require("../../img/restaruant.png");
+      case "transportation":
+        return require("../../img/transportation.png");
+      case "etc":
+        return require("../../img/etc.png");
+      // etc...
+    }
   };
 
   return (
@@ -14,7 +33,7 @@ export const List = ({ item, handleDelete }) => {
           <View style={styles.moneyContainer}>
             <Text style={styles.money}>{item.money}</Text>
             <View style={styles.line} />
-            <Image style={styles.logo} source={require("../../img/food.png")} />
+            <Image style={styles.logo} source={getLink()} />
           </View>
 
           <View style={styles.wall} />

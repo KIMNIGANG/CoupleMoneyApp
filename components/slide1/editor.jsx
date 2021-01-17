@@ -1,25 +1,19 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Dimensions,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
 
-import firebase from "firebase";
+import RNPickerSelect from "react-native-picker-select";
 import { addToList } from "../../service/addToList";
 
 export const Editor = ({ handleAdd }) => {
   const [money, setMoney] = useState();
+  const [category, setCategory] = useState("");
 
   const submit = (value) => {
     if (value <= 0) {
       return;
     }
-    handleAdd(value);
-    addToList(value);
+    handleAdd(value, category);
+    addToList(value, category);
   };
 
   const onChanged = () => {
@@ -40,8 +34,22 @@ export const Editor = ({ handleAdd }) => {
   return (
     <View style={styles.container}>
       <View style={styles.wall} />
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>Hello</Text>
+      <View style={styles.selector}>
+        <Text>Select</Text>
+        <View style={styles.listSelector}>
+          <RNPickerSelect
+            onValueChange={(value) => setCategory(value)}
+            items={[
+              { label: "Food", value: "food" },
+              { label: "Play", value: "play" },
+              { label: "Transportation", value: "transportation" },
+              { label: "Restaruant", value: "restaruant" },
+              { label: "House", value: "house" },
+              { label: "Etc", value: "etc" },
+            ]}
+          />
+        </View>
+        <Image source={require("../../img/calendar.png")} />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
@@ -70,12 +78,12 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "skyblue",
+    backgroundColor: "white",
   },
   wall: {
     width: "100%",
-    height: 5,
-    backgroundColor: "white",
+    height: 2,
+    backgroundColor: "black",
   },
   inputContainer: {
     height: 50,
@@ -91,8 +99,22 @@ const styles = StyleSheet.create({
     borderColor: "#6168DB",
     paddingHorizontal: 10,
   },
-  textContainer: {
-    width: "80%",
+  selector: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+  listSelector: {
+    width: "40%",
+    height: 36,
+    padding: 5,
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
   },
   text: {
     textAlign: "center",
@@ -110,11 +132,10 @@ const styles = StyleSheet.create({
     ...Platform.select({
       ios: {
         borderWidth: 2,
-        borderColor: "white",
+        borderColor: "grey",
         borderRadius: 10,
         paddingLeft: 20,
         paddingRight: 20,
-        backgroundColor: "lightblue",
       },
       android: {},
       default: {},

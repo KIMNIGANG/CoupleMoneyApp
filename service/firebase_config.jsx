@@ -1,5 +1,5 @@
 const firebaseConfig = {
-  // apiKey: "AIzaSyApve9uxrzfTPA082d2ieVoiTxg-DYkL9c",
+  apiKey: "AIzaSyApve9uxrzfTPA082d2ieVoiTxg-DYkL9c",
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_FIREBASE_DB_URL,
   projectId: "couple-moneyapp",

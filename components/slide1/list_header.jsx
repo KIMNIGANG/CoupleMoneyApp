@@ -5,7 +5,7 @@ export const ListHeader = ({ turn1 }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{turn1}</Text>
-      <View style={styles.wall} />
+      <View style={styles.line} />
       <Text style={styles.text2}>Turn:2</Text>
     </View>
   );
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     width: "100%",
     height: 50,
+    borderRadius: 10,
     justifyContent: "space-evenly",
   },
   text: {
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     paddingLeft: "16%",
     fontSize: 25,
   },
-  wall: {
+  line: {
     position: "absolute",
     left: "50%",
     height: "70%",

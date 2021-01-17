@@ -9,6 +9,7 @@ export const MainView = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
     <View style={styles.slide1}>
       <View style={styles.listContainer}>
         <ListHeader turn1={turn1} />
+        <View style={styles.line} />
         <View style={styles.listFlexContainer}>
           <ScrollView style={styles.userList}>
             {user1.map((item) => (
@@ -32,11 +33,11 @@ const styles = StyleSheet.create({
   slide1: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#9DD6EB",
+    backgroundColor: "white",
   },
   listContainer: {
     flex: 1,
-    borderColor: "white",
+    borderColor: "black",
     borderWidth: 2,
     margin: 10,
     borderRadius: 10,
@@ -59,5 +60,10 @@ const styles = StyleSheet.create({
     height: "90%",
     width: 1,
     backgroundColor: "grey",
+  },
+  line: {
+    height: 1,
+    width: "100%",
+    backgroundColor: "black",
   },
 });
