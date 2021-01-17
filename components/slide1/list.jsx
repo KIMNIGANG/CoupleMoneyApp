@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet, Button, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const List = ({ item, handleDelete }) => {
@@ -10,17 +10,28 @@ export const List = ({ item, handleDelete }) => {
   return (
     <View style={styles.list}>
       <View style={styles.itemContainer}>
-        <View style={styles.moneyContainer}>
-          <Text style={styles.money}>{item.money} $</Text>
+        <View style={styles.upContainer}>
+          <View style={styles.moneyContainer}>
+            <Text style={styles.money}>{item.money}</Text>
+            <View style={styles.line} />
+            <Image style={styles.logo} source={require("../../img/food.png")} />
+          </View>
+
+          <View style={styles.wall} />
         </View>
-        <TouchableOpacity //
-          style={styles.deletebutton}
-          onPress={onDelete}
-        >
-          <Text style={styles.deleteText}>Delete</Text>
-        </TouchableOpacity>
+        <View style={styles.downContainer}>
+          <Text style={styles.date}>11/23</Text>
+          <TouchableOpacity //
+            style={styles.deletebutton}
+            onPress={onDelete}
+          >
+            <Image
+              style={styles.logo}
+              source={require("../../img/delete.png")}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.wall} />
     </View>
   );
 };
@@ -34,42 +45,61 @@ const styles = StyleSheet.create({
   },
   moneyContainer: {
     flex: 1,
+    width: "90%",
+    justifyContent: "space-between",
+    flexDirection: "row",
     textAlign: "center",
   },
   money: {
+    paddingLeft: 10,
     fontSize: 16,
+    paddingBottom: 15,
     textAlign: "center",
   },
-  turn: {
-    fontSize: 25,
-    color: "blue",
-    marginRight: 15,
+  line: {
+    position: "absolute",
+    left: "51%",
+    height: "70%",
+    width: 1,
+    backgroundColor: "darkgrey",
   },
   itemContainer: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    flexDirection: "row",
-    width: "70%",
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 10,
+    padding: 13,
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginTop: 10,
+    flexDirection: "column",
+    width: "90%",
+  },
+  upContainer: {
+    height: "50%",
+    paddingBottom: 3,
     alignItems: "center",
     justifyContent: "space-between",
+    flexDirection: "column",
+  },
+  downContainer: {
+    height: "50%",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    flexDirection: "row",
+    paddingTop: 5,
   },
   wall: {
-    height: 2,
-    width: "70%",
-    backgroundColor: "green",
-  },
-  deletebutton: {
-    borderWidth: 1,
-    borderColor: "#0795ff",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100%",
+    height: 1,
     width: "100%",
-    borderRadius: 10,
+    backgroundColor: "grey",
   },
-  deleteText: {
-    padding: 5,
+  date: {
     fontSize: 16,
-    color: "#0795ff",
+  },
+  logo: {
+    resizeMode: "cover",
+    marginRight: 15,
+    width: 27,
+    height: 27,
   },
 });

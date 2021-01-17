@@ -11,8 +11,8 @@ export const Main = () => {
   const [user1, setUser1] = useState([]);
   const [user2, setUser2] = useState([
     { money: 1000, key: uuid.v4() },
-    { money: 1200, key: uuid.v4() },
-    { money: 1030, key: uuid.v4() },
+    { money: 120000, key: uuid.v4() },
+    { money: 1.3, key: uuid.v4() },
     { money: 1040, key: uuid.v4() },
   ]);
 
