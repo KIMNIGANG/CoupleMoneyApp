@@ -3,6 +3,7 @@ import { StyleSheet, View } from "react-native";
 import uuid from "react-native-uuid";
 import { getMoneyList } from "../service/get_moneyList";
 import { Slider } from "./slider";
+import { removeFromList } from "../service/removeFromList";
 
 export const Main = () => {
   const [turn1, setTurn1] = useState(0);
@@ -39,6 +40,7 @@ export const Main = () => {
   const handleDelete = (toDelete) => {
     const moneyList = user1.filter((item) => item.key !== toDelete.key);
     setUser1(moneyList);
+    removeFromList(toDelete.money, toDelete.key);
   };
 
   return (
