@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, View } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
+import { Button, StyleSheet, Text, View } from "react-native";
+import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 
 import firebase from "firebase";
 import "firebase/firestore";
 
-export const Register = () => {
+export const Register = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -63,6 +63,12 @@ export const Register = () => {
           title="Sign Up"
         />
       </View>
+      <View style={styles.regText}>
+        <Text>Already have a account?</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <Text style={styles.signupText}>Login</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -90,5 +96,17 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: "black",
     marginBottom: 20,
+  },
+  regText: {
+    position: "absolute",
+    bottom: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 14,
+    marginTop: "10%",
+  },
+  signupText: {
+    fontSize: 15,
+    color: "orange",
   },
 });
