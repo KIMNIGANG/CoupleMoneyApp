@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fceeff",
+    backgroundColor: "#ffd7d7",
   },
   header: {
     flex: 0.5,
-    backgroundColor: "#fceeff",
+    backgroundColor: "#ffd7d7",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   button: {
     width: 250,
     height: 50,
-    backgroundColor: "#3cd579",
+    backgroundColor: "#ffd7d7",
     marginBottom: 10,
     alignItems: "center",
     justifyContent: "center",
@@ -98,8 +98,8 @@ const styles = StyleSheet.create({
     color: "orange",
   },
   icon: {
-    marginTop: "20%",
-    width: 450,
-    height: 450,
+    marginTop: "6%",
+    width: 350,
+    height: 350,
   },
 });
