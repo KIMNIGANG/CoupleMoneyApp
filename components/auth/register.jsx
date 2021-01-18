@@ -25,7 +25,6 @@ export const Register = () => {
             email,
             moneyList,
           });
-        console.warn(result);
       })
       .catch((error) => {
         console.warn(error);

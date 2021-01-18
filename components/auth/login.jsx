@@ -13,9 +13,6 @@ export const Login = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        console.warn(result);
-      })
       .catch((error) => {
         console.warn(error);
       });
