@@ -24,12 +24,14 @@ export const Login = () => {
   return (
     <View style={styles.container}>
       <TextInput
+        style={styles.input}
         placeholder="email"
         onChangeText={(email) => {
           setEmail(email);
         }}
       />
       <TextInput
+        style={styles.input}
         placeholder="password"
         secureTextEntry={true}
         onChangeText={(password) => {

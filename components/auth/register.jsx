@@ -35,30 +35,35 @@ export const Register = () => {
   return (
     <View style={styles.container}>
       <TextInput
+        style={styles.input}
         placeholder="name"
         onChangeText={(name) => {
           setName(name);
         }}
       />
       <TextInput
+        style={styles.input}
         placeholder="email"
         onChangeText={(email) => {
           setEmail(email);
         }}
       />
       <TextInput
+        style={styles.input}
         placeholder="password"
         secureTextEntry={true}
         onChangeText={(password) => {
           setPassword(password);
         }}
       />
-      <Button
-        onPress={() => {
-          onSignUp();
-        }}
-        title="Sign Up"
-      />
+      <View style={styles.button}>
+        <Button
+          onPress={() => {
+            onSignUp();
+          }}
+          title="Sign Up"
+        />
+      </View>
     </View>
   );
 };
@@ -68,5 +73,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  input: {
+    width: "70%",
+    height: 40,
+    marginBottom: 15,
+    borderWidth: 2,
+    borderColor: "black",
+    borderRadius: 10,
+    justifyContent: "center",
+    textAlign: "center",
+    fontSize: 20,
+  },
+  button: {
+    width: "50%",
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: "black",
+    marginBottom: 20,
   },
 });
