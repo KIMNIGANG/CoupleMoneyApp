@@ -74,10 +74,7 @@ export const Register = ({ navigation }) => {
       </View>
       <View style={styles.footer}>
         <View style={styles.headMessage}>
-          <Text style={styles.headText}>
-            Life's greatest happiness is{"\n"}to be convinced we are loved.
-          </Text>
-          <Text style={styles.headAuthor}>Victor Hugo</Text>
+          <Text style={styles.headText}>Welcome to Double Money Book</Text>
         </View>
         <View style={styles.inputs}>
           <View style={styles.blockContainer}>
@@ -175,16 +172,38 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   headText: {
-    fontSize: 20,
-    fontFamily: "Georgia",
-    marginTop: "5%",
+    marginTop: "10%",
     marginLeft: "5%",
+    ...Platform.select({
+      ios: {
+        fontSize: 23,
+        fontFamily: "Georgia",
+      },
+      android: {
+        fontSize: 20,
+        fontFamily: "serif",
+      },
+      default: {
+        fontSize: 20,
+        fontFamily: "serif",
+      },
+    }),
   },
   headAuthor: {
-    fontFamily: "Georgia",
     fontSize: 15,
     marginTop: "3%",
     marginLeft: "70%",
+    ...Platform.select({
+      ios: {
+        fontFamily: "Georgia",
+      },
+      android: {
+        fontFamily: "serif",
+      },
+      default: {
+        fontFamily: "serif",
+      },
+    }),
   },
 
   footer: {
@@ -217,6 +236,34 @@ const styles = StyleSheet.create({
     height: 40,
     fontSize: 18,
   },
+  loginButton: {
+    width: 250,
+    height: 50,
+    backgroundColor: "#ffd7d7",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "7%",
+  },
+  loginText: {
+    textAlign: "center",
+    fontSize: 18,
+    color: "white",
+    ...Platform.select({
+      ios: {
+        fontSize: 22,
+        fontFamily: "Georgia",
+      },
+      android: {
+        fontSize: 17,
+        fontFamily: "serif",
+      },
+      default: {
+        fontSize: 17,
+        fontFamily: "serif",
+      },
+    }),
+  },
+
   icon: {
     width: 27,
     height: 27,

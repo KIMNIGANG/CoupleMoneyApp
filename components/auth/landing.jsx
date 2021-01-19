@@ -8,8 +8,29 @@ export const Landing = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image style={styles.icon} source={require("../../img/icon.png")} />
+
+        <View style={styles.headMessage}>
+          <Text style={styles.headText}>
+            Life's greatest happiness is{"\n"}to be convinced we are loved.
+          </Text>
+          <Text style={styles.headAuthor}>Victor Hugo</Text>
+        </View>
+
+        <LinearGradient
+          start={{ x: 0, y: 1 }}
+          end={{ x: 1, y: 0 }}
+          colors={["#CBE7F6", "#CBE7F6"]}
+          style={styles.linear}
+        >
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Login")}
+            style={styles.loginButton}
+          >
+            <Text style={styles.loginText}>Get Start</Text>
+          </TouchableOpacity>
+        </LinearGradient>
       </View>
-      <View style={styles.footer}>
+      {/* <View style={styles.footer}>
         <View style={styles.headMessage}>
           <Text style={styles.headText}>
             Life's greatest happiness is{"\n"}to be convinced we are loved.
@@ -20,24 +41,11 @@ export const Landing = ({ navigation }) => {
         <View style={styles.description}>
           <Text style={styles.descriptionText}>
             {
-              "Welcome to Double Money Book.\n\nDouble Money Book is a money book that using two person use.\n\n This App can make you more easier to do Dutch treat with your partner.\n "
+              "Welcome to DoubleMoneyBook.\n\nDouble Money Book is a money book that using two person use.\n\n This App can make you more easier to do Dutch treat with your partner.\n "
             }
           </Text>
         </View>
-        <View style={styles.loginContainer}></View>
-        <LinearGradient
-          start={{ x: 0, y: 1 }}
-          end={{ x: 1, y: 0 }}
-          colors={["#CBE7F6", "#ffd7d7"]}
-        >
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Login")}
-            style={styles.loginButton}
-          >
-            <Text style={styles.loginText}>Get Start</Text>
-          </TouchableOpacity>
-        </LinearGradient>
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -50,7 +58,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffd7d7",
   },
   header: {
-    flex: 0.5,
+    flex: 1,
     backgroundColor: "#ffd7d7",
     alignItems: "center",
     justifyContent: "center",
@@ -60,23 +68,58 @@ const styles = StyleSheet.create({
   },
   headText: {
     fontSize: 20,
-    fontFamily: "Georgia",
     marginTop: "5%",
     marginLeft: "5%",
+    ...Platform.select({
+      ios: {
+        fontFamily: "Georgia",
+      },
+      android: {
+        fontFamily: "serif",
+      },
+      default: {
+        fontFamily: "serif",
+      },
+    }),
   },
   headAuthor: {
-    fontFamily: "Georgia",
     fontSize: 15,
     marginTop: "3%",
     marginLeft: "70%",
+    marginBottom: 10,
+    ...Platform.select({
+      ios: {
+        fontFamily: "Georgia",
+      },
+      android: {
+        fontFamily: "serif",
+      },
+      default: {
+        fontFamily: "serif",
+      },
+    }),
   },
   description: {
+    height: "70%",
     width: "85%",
+    justifyContent: "center",
   },
   descriptionText: {
-    fontFamily: "Georgia",
-    fontSize: 22,
     lineHeight: 25,
+    ...Platform.select({
+      ios: {
+        fontSize: 22,
+        fontFamily: "Georgia",
+      },
+      android: {
+        fontSize: 17,
+        fontFamily: "serif",
+      },
+      default: {
+        fontSize: 17,
+        fontFamily: "serif",
+      },
+    }),
   },
   footer: {
     flex: 0.7,
@@ -96,11 +139,22 @@ const styles = StyleSheet.create({
     marginTop: "7%",
   },
   loginText: {
-    fontFamily: "Georgia",
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 22,
+    marginBottom: "3%",
     color: "white",
+    ...Platform.select({
+      ios: {
+        fontFamily: "Georgia",
+      },
+      android: {
+        fontFamily: "serif",
+      },
+      default: {
+        fontFamily: "serif",
+      },
+    }),
   },
   icon: {
     marginTop: "6%",
