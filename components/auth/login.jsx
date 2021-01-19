@@ -66,11 +66,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 0.8,
     width: "100%",
-    justifyContent: "space-between",
     alignItems: "center",
   },
   text: {
-    marginTop: 15,
     fontSize: 15,
   },
   loginButton: {
@@ -79,6 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffd7d7",
     alignItems: "center",
     justifyContent: "center",
+    marginTop: "7%",
   },
   loginText: {
     fontFamily: "Georgia",
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   blockContainer: {
-    marginTop: 10,
+    marginTop: "3%",
     width: "100%",
     justifyContent: "center",
     alignItems: "center",

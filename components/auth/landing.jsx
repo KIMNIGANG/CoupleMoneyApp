@@ -1,19 +1,44 @@
 import React from "react";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { useEffect } from "react";
+import { Keyboard, Button, Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { useState } from "react/cjs/react.development";
 import { Login } from "./login";
 
 export const Landing = ({ navigation }) => {
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
+    Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
+
+    // cleanup function
+    return () => {
+      Keyboard.removeListener("keyboardDidShow", _keyboardDidShow);
+      Keyboard.removeListener("keyboardDidHide", _keyboardDidHide);
+    };
+  });
+
+  const _keyboardDidShow = () => {
+    setShow(false);
+  };
+
+  const _keyboardDidHide = () => {
+    setShow(true);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image style={styles.icon} source={require("../../img/icon.png")} />
       </View>
       <View style={styles.footer}>
-        <Text style={styles.headText}>
-          Life's greatest happiness is{"\n"}to be convinced we are loved.
-        </Text>
-        <Text style={styles.headAuthor}>Victor Hugo</Text>
+        <View style={styles.headMessage}>
+          <Text style={styles.headText}>
+            Life's greatest happiness is{"\n"}to be convinced we are loved.
+          </Text>
+          <Text style={styles.headAuthor}>Victor Hugo</Text>
+        </View>
         <Login />
         {/* <TouchableOpacity
           style={styles.button}
@@ -21,12 +46,14 @@ export const Landing = ({ navigation }) => {
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity> */}
-        <View style={styles.regText}>
-          <Text>Don't have an account?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-            <Text style={styles.signupText}>SignUp</Text>
-          </TouchableOpacity>
-        </View>
+        {show && (
+          <View style={styles.regText}>
+            <Text>Don't have an account?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+              <Text style={styles.signupText}>SignUp</Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     </View>
   );
@@ -45,16 +72,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  headMessage: {
+    width: "100%",
+  },
   headText: {
     fontSize: 20,
     fontFamily: "Georgia",
-    marginTop: "4.5%",
-    marginRight: "8%",
+    marginTop: "5%",
+    marginLeft: "5%",
   },
   headAuthor: {
     fontFamily: "Georgia",
     fontSize: 15,
-    marginLeft: "25%",
+    marginTop: "3%",
+    marginLeft: "70%",
   },
   subText: {
     marginBottom: 10,
@@ -70,29 +101,18 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
-  },
-  button: {
-    width: 250,
-    height: 50,
-    backgroundColor: "#ffd7d7",
-    marginBottom: 10,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  buttonText: {
-    fontFamily: "Georgia",
-    textAlign: "center",
-    fontSize: 18,
-    color: "white",
+    paddingBottom: "30%",
   },
   regText: {
+    position: "absolute",
+    bottom: "2%",
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 40,
   },
   signupText: {
     fontSize: 15,
-    color: "#ffd7d7",
+    color: "orange",
   },
   icon: {
     marginTop: "6%",
