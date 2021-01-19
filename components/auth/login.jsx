@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 
 import firebase from "firebase";
@@ -7,9 +7,8 @@ import firebase from "firebase";
 export const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
 
-  const onSignUp = () => {
+  const onLogin = () => {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -20,53 +19,99 @@ export const Login = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="email"
-        onChangeText={(email) => {
-          setEmail(email);
-        }}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="password"
-        secureTextEntry={true}
-        onChangeText={(password) => {
-          setPassword(password);
-        }}
-      />
-      <Button
-        onPress={() => {
-          onSignUp();
-        }}
-        title="Sign Up"
-      />
-      <View style={styles.regText}>
-        <Text>Don't have an account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-          <Text style={styles.signupText}>SignUp</Text>
-        </TouchableOpacity>
+      <Text style={styles.text}>Sign in with your account</Text>
+      <View style={styles.blockContainer}>
+        <View style={styles.inputContainer}>
+          <Image source={require("../../img/email.png")} style={styles.icon} />
+          <TextInput
+            style={styles.input}
+            placeholder="email"
+            onChangeText={(email) => {
+              setEmail(email);
+            }}
+          />
+        </View>
+        <View style={styles.wall} />
       </View>
+      <View style={styles.blockContainer}>
+        <View style={styles.inputContainer}>
+          <Image
+            source={require("../../img/password.png")}
+            style={styles.icon}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="password"
+            secureTextEntry={true}
+            onChangeText={(password) => {
+              setPassword(password);
+            }}
+          />
+        </View>
+        <View style={styles.wall} />
+      </View>
+      <TouchableOpacity
+        onPress={() => {
+          onLogin();
+        }}
+        style={styles.loginButton}
+      >
+        <Text style={styles.loginText}>Login</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
+    flex: 0.8,
+    width: "100%",
+    justifyContent: "space-between",
     alignItems: "center",
   },
-  regText: {
-    position: "absolute",
-    bottom: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 14,
-    marginTop: "10%",
-  },
-  signupText: {
+  text: {
+    marginTop: 15,
     fontSize: 15,
-    color: "orange",
+  },
+  loginButton: {
+    width: 250,
+    height: 50,
+    backgroundColor: "#ffd7d7",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  loginText: {
+    fontFamily: "Georgia",
+    textAlign: "center",
+    fontSize: 18,
+    color: "white",
+  },
+  blockContainer: {
+    marginTop: 10,
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  inputContainer: {
+    flexDirection: "row",
+    width: "83%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  input: {
+    width: "80%",
+    height: 40,
+    fontSize: 18,
+  },
+  icon: {
+    width: 27,
+    height: 27,
+    marginRight: 4,
+  },
+  wall: {
+    marginTop: 12,
+    width: "80%",
+    height: 1,
+    backgroundColor: "lightgrey",
   },
 });

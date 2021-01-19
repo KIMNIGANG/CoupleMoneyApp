@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Login } from "./login";
 
 export const Landing = ({ navigation }) => {
   return (
@@ -13,13 +14,13 @@ export const Landing = ({ navigation }) => {
           Life's greatest happiness is{"\n"}to be convinced we are loved.
         </Text>
         <Text style={styles.headAuthor}>Victor Hugo</Text>
-        <Text style={styles.subText}>Sign in with your account</Text>
-        <TouchableOpacity
+        <Login />
+        {/* <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate("Login")}
         >
           <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <View style={styles.regText}>
           <Text>Don't have an account?</Text>
           <TouchableOpacity onPress={() => navigation.navigate("Register")}>
@@ -45,18 +46,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   headText: {
-    position: "absolute",
-    top: "9%",
-    left: "10%",
     fontSize: 20,
     fontFamily: "Georgia",
+    marginTop: "4.5%",
+    marginRight: "8%",
   },
   headAuthor: {
-    position: "absolute",
-    top: "25%",
-    right: "18%",
     fontFamily: "Georgia",
     fontSize: 15,
+    marginLeft: "25%",
   },
   subText: {
     marginBottom: 10,
@@ -67,7 +65,7 @@ const styles = StyleSheet.create({
   footer: {
     flex: 0.7,
     width: "100%",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "white",
     borderTopRightRadius: 30,
@@ -91,11 +89,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 40,
-    marginTop: "10%",
   },
   signupText: {
     fontSize: 15,
-    color: "orange",
+    color: "#ffd7d7",
   },
   icon: {
     marginTop: "6%",

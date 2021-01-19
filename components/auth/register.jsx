@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 
 import firebase from "firebase";
@@ -33,28 +33,50 @@ export const Register = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="name"
-        onChangeText={(name) => {
-          setName(name);
-        }}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="email"
-        onChangeText={(email) => {
-          setEmail(email);
-        }}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="password"
-        secureTextEntry={true}
-        onChangeText={(password) => {
-          setPassword(password);
-        }}
-      />
+      <View style={styles.blockContainer}>
+        <View style={styles.inputContainer}>
+          <Image source={require("../../img/name.png")} style={styles.icon} />
+          <TextInput
+            style={styles.input}
+            placeholder="name"
+            onChangeText={(name) => {
+              setName(name);
+            }}
+          />
+        </View>
+        <View style={styles.wall} />
+      </View>
+      <View style={styles.blockContainer}>
+        <View style={styles.inputContainer}>
+          <Image source={require("../../img/email.png")} style={styles.icon} />
+          <TextInput
+            style={styles.input}
+            placeholder="email"
+            onChangeText={(email) => {
+              setEmail(email);
+            }}
+          />
+        </View>
+        <View style={styles.wall} />
+      </View>
+      <View style={styles.blockContainer}>
+        <View style={styles.inputContainer}>
+          <Image
+            source={require("../../img/password.png")}
+            style={styles.icon}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="password"
+            secureTextEntry={true}
+            onChangeText={(password) => {
+              setPassword(password);
+            }}
+          />
+        </View>
+        <View style={styles.wall} />
+      </View>
+
       <View style={styles.button}>
         <Button
           onPress={() => {
@@ -79,23 +101,33 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  input: {
-    width: "70%",
-    height: 40,
-    marginBottom: 15,
-    borderWidth: 2,
-    borderColor: "black",
-    borderRadius: 10,
+  blockContainer: {
+    width: "100%",
     justifyContent: "center",
-    textAlign: "center",
-    fontSize: 20,
+    marginTop: 10,
+    alignItems: "center",
   },
-  button: {
-    width: "50%",
-    borderWidth: 2,
-    borderRadius: 10,
-    borderColor: "black",
-    marginBottom: 20,
+  inputContainer: {
+    flexDirection: "row",
+    width: "83%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  input: {
+    width: "80%",
+    height: 40,
+    fontSize: 18,
+  },
+  icon: {
+    width: 27,
+    height: 27,
+    marginRight: 4,
+  },
+  wall: {
+    marginTop: 12,
+    width: "80%",
+    height: 1,
+    backgroundColor: "lightgrey",
   },
   regText: {
     position: "absolute",
