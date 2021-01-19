@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Keyboard, Button, Image, StyleSheet, Text, View } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { useEffect } from "react";
 
 import firebase from "firebase";
 import "firebase/firestore";
-import { useEffect } from "react";
 
 export const Register = ({ navigation }) => {
   const [show, setShow] = useState(true);
@@ -32,6 +32,17 @@ export const Register = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const moneyList = [];
+
+  // var user = firebase.auth().currentUser;
+
+  // user
+  //   .sendEmailVerification()
+  //   .then(function () {
+  //     // Email sent.
+  //   })
+  //   .catch(function (error) {
+  //     // An error happened.
+  //   });
 
   const onSignUp = () => {
     firebase
@@ -120,19 +131,19 @@ export const Register = ({ navigation }) => {
           </View>
         </View>
 
-        <View style={styles.button}>
-          <Button
-            onPress={() => {
-              onSignUp();
-            }}
-            title="Sign Up"
-          />
-        </View>
+        <TouchableOpacity
+          onPress={() => {
+            onSignUp();
+          }}
+          style={styles.loginButton}
+        >
+          <Text style={styles.loginText}>Sign Up</Text>
+        </TouchableOpacity>
       </View>
       {show && (
         <View style={styles.regText}>
           <Text>Already have an account?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Landing")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Login")}>
             <Text style={styles.signupText}>Login</Text>
           </TouchableOpacity>
         </View>

@@ -1,32 +1,9 @@
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { useEffect } from "react";
-import { Keyboard, Button, Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { useState } from "react/cjs/react.development";
-import { Login } from "./login";
 
 export const Landing = ({ navigation }) => {
-  const [show, setShow] = useState(true);
-
-  useEffect(() => {
-    Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
-    Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
-
-    // cleanup function
-    return () => {
-      Keyboard.removeListener("keyboardDidShow", _keyboardDidShow);
-      Keyboard.removeListener("keyboardDidHide", _keyboardDidHide);
-    };
-  });
-
-  const _keyboardDidShow = () => {
-    setShow(false);
-  };
-
-  const _keyboardDidHide = () => {
-    setShow(true);
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -39,21 +16,27 @@ export const Landing = ({ navigation }) => {
           </Text>
           <Text style={styles.headAuthor}>Victor Hugo</Text>
         </View>
-        <Login />
-        {/* <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Login")}
+        <View style={styles.wall} />
+        <View style={styles.description}>
+          <Text style={styles.descriptionText}>
+            {
+              "Welcome to Double Money Book.\n\nDouble Money Book is a money book that using two person use.\n\n This App can make you more easier to do Dutch treat with your partner.\n "
+            }
+          </Text>
+        </View>
+        <View style={styles.loginContainer}></View>
+        <LinearGradient
+          start={{ x: 0, y: 1 }}
+          end={{ x: 1, y: 0 }}
+          colors={["#CBE7F6", "#ffd7d7"]}
         >
-          <Text style={styles.buttonText}>Login</Text>
-        </TouchableOpacity> */}
-        {show && (
-          <View style={styles.regText}>
-            <Text>Don't have an account?</Text>
-            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-              <Text style={styles.signupText}>SignUp</Text>
-            </TouchableOpacity>
-          </View>
-        )}
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Login")}
+            style={styles.loginButton}
+          >
+            <Text style={styles.loginText}>Get Start</Text>
+          </TouchableOpacity>
+        </LinearGradient>
       </View>
     </View>
   );
@@ -87,11 +70,13 @@ const styles = StyleSheet.create({
     marginTop: "3%",
     marginLeft: "70%",
   },
-  subText: {
-    marginBottom: 10,
-    fontSize: 20,
+  description: {
+    width: "85%",
+  },
+  descriptionText: {
     fontFamily: "Georgia",
-    marginBottom: 25,
+    fontSize: 22,
+    lineHeight: 25,
   },
   footer: {
     flex: 0.7,
@@ -103,20 +88,28 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     paddingBottom: "30%",
   },
-  regText: {
-    position: "absolute",
-    bottom: "2%",
+  loginButton: {
+    width: 300,
+    height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 40,
+    marginTop: "7%",
   },
-  signupText: {
-    fontSize: 15,
-    color: "orange",
+  loginText: {
+    fontFamily: "Georgia",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 22,
+    color: "white",
   },
   icon: {
     marginTop: "6%",
     width: 350,
     height: 350,
+  },
+  wall: {
+    width: "100%",
+    height: 2,
+    backgroundColor: "grey",
   },
 });
