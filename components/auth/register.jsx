@@ -74,7 +74,7 @@ export const Register = ({ navigation }) => {
       </View>
       <View style={styles.footer}>
         <View style={styles.headMessage}>
-          <Text style={styles.headText}>Welcome to Double Money Book</Text>
+          <Text style={styles.headText}>Create Account</Text>
         </View>
         <View style={styles.inputs}>
           <View style={styles.blockContainer}>
@@ -172,23 +172,24 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   headText: {
+    fontSize: 20,
+    textAlign: "center",
     marginTop: "10%",
-    marginLeft: "5%",
+    fontWeight: "400",
     ...Platform.select({
       ios: {
-        fontSize: 23,
-        fontFamily: "Georgia",
+        fontSize: 30,
       },
       android: {
-        fontSize: 20,
-        fontFamily: "serif",
+        fontSize: 27,
       },
       default: {
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: "serif",
       },
     }),
   },
+
   headAuthor: {
     fontSize: 15,
     marginTop: "3%",

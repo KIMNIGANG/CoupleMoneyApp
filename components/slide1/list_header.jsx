@@ -15,10 +15,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "white",
     width: "100%",
     height: 50,
-    borderRadius: 10,
+    borderTopWidth: 1,
+    borderTopColor: "black",
     justifyContent: "space-evenly",
   },
   text: {
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
   line: {
     position: "absolute",
     left: "50%",
-    height: "70%",
-    width: 2,
+    height: "100%",
+    width: 1,
     backgroundColor: "black",
   },
 });

@@ -29,7 +29,7 @@ export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
 const styles = StyleSheet.create({
   slide1: {
     flex: 1,
-    paddingTop: "10%",
+    paddingTop: "8%",
     flexDirection: "row",
     backgroundColor: "white",
   },

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 import RNPickerSelect from "react-native-picker-select";
 import { addToList } from "../../service/addToList";
 
 export const Editor = ({ handleAdd }) => {
   const [money, setMoney] = useState();
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("etc");
 
   const submit = (value) => {
     if (value <= 0) {
@@ -35,9 +36,11 @@ export const Editor = ({ handleAdd }) => {
     <View style={styles.container}>
       <View style={styles.wall} />
       <View style={styles.selector}>
-        <Text>Select</Text>
         <View style={styles.listSelector}>
           <RNPickerSelect
+            placeholder={{
+              label: "Select Category",
+            }}
             onValueChange={(value) => setCategory(value)}
             items={[
               { label: "Food", value: "food" },
@@ -64,9 +67,9 @@ export const Editor = ({ handleAdd }) => {
           }}
         />
       </View>
-      <View style={styles.buttonContainer}>
-        <Button style={styles.button} title="Plus" onPress={onChanged} />
-      </View>
+      <TouchableOpacity onPress={onChanged} style={styles.loginButton}>
+        <Text style={styles.loginText}>Plus</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -94,9 +97,8 @@ const styles = StyleSheet.create({
   textInput: {
     height: "100%",
     width: "100%",
-    borderRadius: 10,
     borderWidth: 2,
-    borderColor: "#6168DB",
+    fontSize: 17,
     paddingHorizontal: 10,
   },
   selector: {
@@ -106,12 +108,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   listSelector: {
-    width: "40%",
-    height: 36,
+    width: "60%",
+    height: "55%",
     padding: 5,
     borderWidth: 1,
-    borderColor: "black",
-    borderRadius: 10,
+    borderRadius: 3,
+    borderColor: "grey",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
@@ -126,22 +128,32 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
   },
-  buttonContainer: {
-    margin: 10,
+  loginButton: {
     marginBottom: "16%",
+    width: 250,
+    height: 50,
+    backgroundColor: "#CBE7F6",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "7%",
+  },
+  loginText: {
+    textAlign: "center",
+    fontSize: 18,
+    color: "white",
     ...Platform.select({
       ios: {
-        borderWidth: 2,
-        borderColor: "grey",
-        borderRadius: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
+        fontSize: 22,
+        fontFamily: "Georgia",
       },
-      android: {},
-      default: {},
+      android: {
+        fontSize: 17,
+        fontFamily: "serif",
+      },
+      default: {
+        fontSize: 17,
+        fontFamily: "serif",
+      },
     }),
-  },
-  button: {
-    width: "100%",
   },
 });

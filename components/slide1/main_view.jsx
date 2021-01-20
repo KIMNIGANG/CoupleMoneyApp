@@ -4,9 +4,27 @@ import { Editor } from "./editor";
 import { List } from "./list";
 import { ListHeader } from "./list_header";
 
+import {
+  AdMobBanner,
+  AdMobInterstitial,
+  PublisherBanner,
+  AdMobRewarded,
+  setTestDeviceIDAsync,
+} from "expo-ads-admob";
+
+const adUnitID = Platform.select({
+  ios: "ca-app-pub-3940256099942544/2934735716",
+  android: "ca-app-pub-3940256099942544/6300978111",
+});
+
 export const MainView = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
   return (
     <View style={styles.slide1}>
+      <AdMobBanner
+        bannerSize="fullBanner"
+        adUnitID={adUnitID}
+        servePersonalizedAds="true"
+      />
       <View style={styles.listContainer}>
         <ListHeader turn1={turn1} />
         <View style={styles.line} />
@@ -36,10 +54,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   listContainer: {
+    height: "100%",
     flex: 1,
     borderColor: "black",
-    borderWidth: 2,
-    margin: 10,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",

@@ -65,19 +65,23 @@ const styles = StyleSheet.create({
   },
   headMessage: {
     width: "100%",
+    height: "30%",
   },
   headText: {
-    fontSize: 20,
     marginTop: "5%",
+    marginBottom: 10,
     marginLeft: "5%",
     ...Platform.select({
       ios: {
+        fontSize: 20,
         fontFamily: "Georgia",
       },
       android: {
+        fontSize: 18,
         fontFamily: "serif",
       },
       default: {
+        fontSize: 18,
         fontFamily: "serif",
       },
     }),

@@ -22,7 +22,6 @@ export const List = ({ item, handleDelete }) => {
         return require("../../img/transportation.png");
       case "etc":
         return require("../../img/etc.png");
-      // etc...
     }
   };
 
@@ -32,7 +31,6 @@ export const List = ({ item, handleDelete }) => {
         <View style={styles.upContainer}>
           <View style={styles.moneyContainer}>
             <Text style={styles.money}>{item.money}</Text>
-            <View style={styles.line} />
             <Image style={styles.logo} source={getLink()} />
           </View>
 
@@ -78,14 +76,14 @@ const styles = StyleSheet.create({
   line: {
     position: "absolute",
     left: "51%",
-    height: "70%",
+    height: "100%",
     width: 1,
     backgroundColor: "darkgrey",
   },
   itemContainer: {
     borderWidth: 1,
     borderColor: "black",
-    borderRadius: 10,
+    borderRadius: 4,
     padding: 13,
     paddingLeft: 10,
     paddingRight: 10,
@@ -109,10 +107,14 @@ const styles = StyleSheet.create({
   },
   wall: {
     height: 1,
-    width: "100%",
+    width: "113%",
     backgroundColor: "grey",
   },
+  deletebutton: {
+    right: "-51%",
+  },
   date: {
+    left: "-30%",
     fontSize: 16,
   },
   logo: {
