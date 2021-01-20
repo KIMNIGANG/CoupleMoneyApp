@@ -35,6 +35,7 @@ export const getPartnerList = (moneyList, setMoneyList, setPartner) => {
                   list[i] = {
                     money: doc.data().moneyList[i].money,
                     key: doc.data().moneyList[i].key,
+                    category: doc.data().moneyList[i].category,
                   };
                   if (i == doc.data().moneyList.length - 1) {
                     setMoneyList(list);

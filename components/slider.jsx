@@ -12,7 +12,10 @@ export const Slider = ({
   partner,
 }) => {
   return (
-    <Swiper showsButtons={false}>
+    <Swiper
+      showsButtons={false}
+      showsPagination={Platform.OS === "ios" ? true : false}
+    >
       <View style={styles.slide1}>
         <MainView //
           turn1={turn1}

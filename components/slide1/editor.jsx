@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#CBE7F6",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: "7%",
+    marginTop: "5%",
   },
   loginText: {
     textAlign: "center",

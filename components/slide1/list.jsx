@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   money: {
-    paddingLeft: 10,
+    paddingLeft: "4%",
     fontSize: 16,
     paddingBottom: 15,
     textAlign: "center",
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   downContainer: {
     height: "50%",
     alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     flexDirection: "row",
     paddingTop: 5,
   },
@@ -111,15 +111,15 @@ const styles = StyleSheet.create({
     backgroundColor: "grey",
   },
   deletebutton: {
-    right: "-51%",
+    marginRight: "5%",
   },
   date: {
-    left: "-30%",
+    marginLeft: "6%",
     fontSize: 16,
   },
   logo: {
     resizeMode: "cover",
-    marginRight: 15,
+    marginRight: "6%",
     width: 27,
     height: 27,
   },
