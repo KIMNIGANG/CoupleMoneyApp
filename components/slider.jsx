@@ -3,7 +3,14 @@ import { Button, StyleSheet, Text, View } from "react-native";
 import Swiper from "react-native-swiper";
 import { MainView } from "./slide1/main_view";
 
-export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
+export const Slider = ({
+  user1,
+  user2,
+  handleDelete,
+  handleAdd,
+  turn1,
+  partner,
+}) => {
   return (
     <Swiper showsButtons={false}>
       <View style={styles.slide1}>
@@ -13,6 +20,7 @@ export const Slider = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
           user2={user2}
           handleDelete={handleDelete}
           handleAdd={handleAdd}
+          partner={partner}
         />
       </View>
       <View style={styles.slide2}>

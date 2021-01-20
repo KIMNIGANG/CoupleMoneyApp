@@ -24,14 +24,6 @@ export const getMoneyList = (moneyList, setMoneyList) => {
           if (i == doc.data().moneyList.length - 1) {
             setMoneyList(list);
           }
-
-          // setMoneyList([
-          //   ...moneyList,
-          //   {
-          //     money: doc.data().moneyList[i].money,
-          //     key: doc.data().moneyList[i].key,
-          //   },
-          // ]);
         }
       }
     })

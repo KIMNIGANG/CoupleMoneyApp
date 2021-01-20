@@ -11,13 +11,21 @@ import {
   AdMobRewarded,
   setTestDeviceIDAsync,
 } from "expo-ads-admob";
+import { Nopartner } from "./nopartner";
 
 const adUnitID = Platform.select({
   ios: "ca-app-pub-3940256099942544/2934735716",
   android: "ca-app-pub-3940256099942544/6300978111",
 });
 
-export const MainView = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
+export const MainView = ({
+  user1,
+  user2,
+  handleDelete,
+  handleAdd,
+  turn1,
+  partner,
+}) => {
   return (
     <View style={styles.slide1}>
       <AdMobBanner
@@ -35,11 +43,14 @@ export const MainView = ({ user1, user2, handleDelete, handleAdd, turn1 }) => {
             ))}
           </ScrollView>
           <View style={styles.wall} />
-          <ScrollView style={styles.userList}>
-            {user2.map((item) => (
-              <List key={item.key} item={item} handleDelete={handleDelete} />
-            ))}
-          </ScrollView>
+          {partner && (
+            <ScrollView style={styles.userList}>
+              {user2.map((item) => (
+                <List key={item.key} item={item} handleDelete={handleDelete} />
+              ))}
+            </ScrollView>
+          )}
+          {!partner && <Nopartner />}
         </View>
       </View>
       <Editor style={styles.editor} handleAdd={handleAdd} />
