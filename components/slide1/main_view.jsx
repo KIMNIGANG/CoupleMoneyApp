@@ -3,20 +3,7 @@ import { AppRegistry, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Editor } from "./editor";
 import { List } from "./list";
 import { ListHeader } from "./list_header";
-
-import {
-  AdMobBanner,
-  AdMobInterstitial,
-  PublisherBanner,
-  AdMobRewarded,
-  setTestDeviceIDAsync,
-} from "expo-ads-admob";
 import { Nopartner } from "./nopartner";
-
-const adUnitID = Platform.select({
-  ios: "ca-app-pub-3940256099942544/2934735716",
-  android: "ca-app-pub-3940256099942544/6300978111",
-});
 
 export const MainView = ({
   user1,
@@ -24,17 +11,13 @@ export const MainView = ({
   handleDelete,
   handleAdd,
   turn1,
+  turn2,
   partner,
 }) => {
   return (
     <View style={styles.slide1}>
-      <AdMobBanner
-        bannerSize="fullBanner"
-        adUnitID={adUnitID}
-        servePersonalizedAds="true"
-      />
       <View style={styles.listContainer}>
-        <ListHeader turn1={turn1} />
+        <ListHeader turn1={turn1} turn2={turn2} />
         <View style={styles.line} />
         <View style={styles.listFlexContainer}>
           <ScrollView style={styles.userList}>
@@ -65,7 +48,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   listContainer: {
-    height: "100%",
     flex: 1,
     borderColor: "black",
     borderRadius: 10,
@@ -77,15 +59,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
   },
-  editor: {
-    flex: 1,
-  },
   userList: {
     width: "100%",
   },
   wall: {
-    marginTop: "5%",
     height: "90%",
+    marginTop: "6%",
     width: 1,
     backgroundColor: "grey",
   },

@@ -9,6 +9,7 @@ export const Slider = ({
   handleDelete,
   handleAdd,
   turn1,
+  turn2,
   partner,
 }) => {
   return (
@@ -19,6 +20,7 @@ export const Slider = ({
       <View style={styles.slide1}>
         <MainView //
           turn1={turn1}
+          turn2={turn2}
           user1={user1}
           user2={user2}
           handleDelete={handleDelete}
@@ -40,7 +42,6 @@ export const Slider = ({
 const styles = StyleSheet.create({
   slide1: {
     flex: 1,
-    paddingTop: "8%",
     flexDirection: "row",
     backgroundColor: "white",
   },

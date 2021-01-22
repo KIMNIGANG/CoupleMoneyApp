@@ -38,6 +38,7 @@ export const Editor = ({ handleAdd }) => {
       <View style={styles.selector}>
         <View style={styles.listSelector}>
           <RNPickerSelect
+            style={{ inputAndroid: { color: "black" } }}
             placeholder={{
               label: "Select Category",
             }}
@@ -76,9 +77,21 @@ export const Editor = ({ handleAdd }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.5,
+    flex: 0.3,
     width: "100%",
     height: "100%",
+    ...Platform.select({
+      ios: {
+        marginBottom: "40%",
+      },
+      android: {
+        marginBottom: "42%",
+      },
+      default: {
+        marginBottom: "35%",
+      },
+    }),
+
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "white",

@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export const ListHeader = ({ turn1 }) => {
+export const ListHeader = ({ turn1, turn2 }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{turn1}</Text>
       <View style={styles.line} />
-      <Text style={styles.text2}>Turn:2</Text>
+      <Text style={styles.text2}>{turn2}</Text>
     </View>
   );
 };
