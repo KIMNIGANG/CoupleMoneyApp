@@ -4,7 +4,7 @@ import uuid from "react-native-uuid";
 import "firebase/firestore";
 import { setTurn } from "./set_turn";
 
-export const getMoneyList = (moneyList, setMoneyList, setSum, setTurn1) => {
+export const getMoneyList = (setMoneyList, setSum, setTurn1, setLeft) => {
   firebase
     .firestore()
     .collection("users")
@@ -15,15 +15,18 @@ export const getMoneyList = (moneyList, setMoneyList, setSum, setTurn1) => {
         console.log("No such document!");
       } else {
         const list = [];
+        let sum = 0;
         for (let i = 0; i < doc.data().moneyList.length; i++) {
           list[i] = {
             money: doc.data().moneyList[i].money,
             key: doc.data().moneyList[i].key,
             category: doc.data().moneyList[i].category,
           };
+          sum += Number(doc.data().moneyList[i].money);
           if (i == doc.data().moneyList.length - 1) {
             setMoneyList(list);
-            setTurn(list, setSum, setTurn1);
+            setSum(sum);
+            setTurn(setTurn1, sum, setLeft);
           }
         }
       }

@@ -13,11 +13,18 @@ export const MainView = ({
   turn1,
   turn2,
   partner,
+  left,
+  partnerLeft,
 }) => {
   return (
     <View style={styles.slide1}>
       <View style={styles.listContainer}>
-        <ListHeader turn1={turn1} turn2={turn2} />
+        <ListHeader
+          turn1={turn1}
+          turn2={turn2}
+          left={left}
+          partnerLeft={partnerLeft}
+        />
         <View style={styles.line} />
         <View style={styles.listFlexContainer}>
           <ScrollView style={styles.userList}>

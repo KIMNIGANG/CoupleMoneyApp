@@ -11,6 +11,8 @@ export const Slider = ({
   turn1,
   turn2,
   partner,
+  left,
+  partnerLeft,
 }) => {
   return (
     <Swiper
@@ -19,6 +21,8 @@ export const Slider = ({
     >
       <View style={styles.slide1}>
         <MainView //
+          partnerLeft={partnerLeft}
+          left={left}
           turn1={turn1}
           turn2={turn2}
           user1={user1}

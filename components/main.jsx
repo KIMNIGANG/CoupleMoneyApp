@@ -23,27 +23,37 @@ export const Main = () => {
   const [turn1, setTurn1] = useState(0);
   const [turn2, setTurn2] = useState(0);
   const [sum1, setSum1] = useState(0);
-  const [user2Sum, setUser2Sum] = useState(0);
+  const [user2Sum, setUser2Sum] = useState(0); //파트너의 썸
   const [user1, setUser1] = useState([]);
   const [user2, setUser2] = useState([]);
-  const [partner, setPartner] = useState(true);
+  const [left, setLeft] = useState(0);
+  const [partnerLeft, setPartnerLeft] = useState(0);
+  const [partner, setPartner] = useState(true); //파트너의 유무
 
   useEffect(() => {
-    getMoneyList(user1, setUser1, setSum1, setTurn1);
-    getPartnerList(user2, setUser2, setTurn2, setPartner, setUser2Sum);
+    getMoneyList(setUser1, setSum1, setTurn1, setLeft);
+    getPartnerList(setUser2, setPartner, setUser2Sum, setTurn2, setPartnerLeft);
   }, []);
 
   function handleAdd(money, category) {
     setUser1([...user1, { money, category, key: uuid.v4() }]);
-    const sum = sum1 + Number(money);
-    setSum1(sum);
-    const turn = Math.floor(sum / 10000);
-    setTurn1(turn);
+    const newSum = sum1 + Number(money);
+    setSum1(newSum);
+    if (Math.floor(newSum / 10000) != turn1) {
+      setTurn1(Math.floor(newSum / 10000));
+    }
+    const newLeft = newSum % 10000;
+    setLeft(newLeft);
   }
 
   function handleDelete(toDelete) {
     const moneyList = user1.filter((item) => item.key !== toDelete.key);
     setUser1(moneyList);
+    const newSum = sum1 - Number(toDelete.money);
+    setSum1(newSum);
+    if (Math.floor(newSum / 10000) != turn1) {
+      setTurn1(Math.floor(newSum / 10000));
+    }
     removeFromList(toDelete.money, toDelete.key, toDelete.category);
   }
 
@@ -57,6 +67,8 @@ export const Main = () => {
       />
       <View style={styles.sliderContainer}>
         <Slider
+          partnerLeft={partnerLeft}
+          left={left}
           partner={partner}
           user1={user1}
           user2={user2}
