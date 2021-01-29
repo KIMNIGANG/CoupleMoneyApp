@@ -8,7 +8,7 @@ export const getPartnerList = (
   setMoneyList,
   setPartner,
   setSum,
-  setTurn,
+  setTurn2,
   setPartnerLeft
 ) => {
   firebase
@@ -49,7 +49,7 @@ export const getPartnerList = (
                   if (i == doc.data().moneyList.length - 1) {
                     setMoneyList(list);
                     setSum(sum);
-                    setTurn(setTurn, sum, setPartnerLeft);
+                    setTurn(setTurn2, sum, setPartnerLeft);
                   }
                 }
               }

@@ -4,6 +4,7 @@ import { Editor } from "./editor";
 import { List } from "./list";
 import { ListHeader } from "./list_header";
 import { Nopartner } from "./nopartner";
+import { PartnerList } from "./partner_list";
 
 export const MainView = ({
   user1,
@@ -36,7 +37,7 @@ export const MainView = ({
           {partner && (
             <ScrollView style={styles.userList}>
               {user2.map((item) => (
-                <List key={item.key} item={item} handleDelete={handleDelete} />
+                <PartnerList key={item.key} item={item} />
               ))}
             </ScrollView>
           )}
