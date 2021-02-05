@@ -18,9 +18,11 @@ export const Editor = ({ handleAdd }) => {
   };
 
   const onChanged = () => {
+    if (money == undefined) {
+      return;
+    }
     let newText = "";
     let numbers = "0123456789.";
-
     for (var i = 0; i < money.length; i++) {
       if (numbers.indexOf(money[i]) > -1) {
         newText = newText + money[i];

@@ -39,7 +39,6 @@ export const getPartnerList = (
                 const list = [];
                 let sum = 0;
                 for (let i = 0; i < doc.data().moneyList.length; i++) {
-                  console.log(doc.data().moneyList);
                   list[i] = {
                     money: doc.data().moneyList[i].money,
                     key: doc.data().moneyList[i].key,

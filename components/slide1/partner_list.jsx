@@ -1,6 +1,5 @@
 import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
-import HeartIcon from "./heart";
 
 export const PartnerList = ({ item }) => {
   const getLink = () => {
@@ -33,7 +32,6 @@ export const PartnerList = ({ item }) => {
         </View>
         <View style={styles.downContainer}>
           <Text style={styles.date}>11/23</Text>
-          <HeartIcon style={styles.icon} />
         </View>
       </View>
     </View>

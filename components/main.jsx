@@ -6,13 +6,7 @@ import { getPartnerList } from "../service/get_partnerList";
 import { Slider } from "./slider";
 import { removeFromList } from "../service/removeFromList";
 
-import {
-  AdMobBanner,
-  AdMobInterstitial,
-  PublisherBanner,
-  AdMobRewarded,
-  setTestDeviceIDAsync,
-} from "expo-ads-admob";
+import { AdMobBanner } from "expo-ads-admob";
 
 const adUnitID = Platform.select({
   ios: "ca-app-pub-3940256099942544/2934735716",
