@@ -14,8 +14,15 @@ export const Editor = ({ handleAdd }) => {
     if (value <= 0) {
       return;
     }
-    handleAdd(value, category, date);
-    addToList(value, category, date);
+    if (category == null) {
+      setCategory("etc");
+      handleAdd(value, category, date);
+      addToList(value, category, date);
+    } else {
+      handleAdd(value, category, date);
+      addToList(value, category, date);
+    }
+    setMoney("");
   };
 
   const onChanged = () => {
@@ -65,6 +72,7 @@ export const Editor = ({ handleAdd }) => {
           keyboardType="numeric"
           maxLength={10}
           onSubmitEditing={onChanged}
+          value={money}
           onChangeText={(value) => {
             setMoney(value);
           }}
@@ -124,7 +132,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   listSelector: {
-    width: "60%",
+    width: "100%",
     height: "55%",
     padding: 5,
     borderWidth: 1,

@@ -33,7 +33,6 @@ export const Register = ({ navigation }) => {
   const [name, setName] = useState("");
   const moneyList = [];
   const partnerUid = "";
-  const dday = "";
 
   // var user = firebase.auth().currentUser;
 
@@ -60,7 +59,6 @@ export const Register = ({ navigation }) => {
             email,
             moneyList,
             partnerUid,
-            dday,
           });
       })
       .catch((error) => {
