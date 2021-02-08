@@ -35,7 +35,6 @@ export const Slider = ({
           uid={uid}
         />
       </View>
-      <View style={styles.slide2}></View>
       <View style={styles.slide3}>
         <Slide3 />
       </View>

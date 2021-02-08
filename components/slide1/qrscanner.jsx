@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Button } from "react-native";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { addPartnerUid } from "../../service/addPartnerUid";
+import { NativeModules } from "react-native";
 
 export const QrScanner = () => {
   const [hasPermission, setHasPermission] = useState(null);
@@ -16,10 +17,17 @@ export const QrScanner = () => {
     })();
   }, []);
 
-  const handleBarCodeScanned = ({ data }) => {
-    alert(data);
-    addPartnerUid(data);
-    setWantScan(false);
+  const handleBarCodeScanned = ({ type, data }) => {
+    if (type < 256) {
+      return;
+    } else {
+      alert(type);
+      addPartnerUid(data);
+      setWantScan(false);
+      setTimeout(() => {
+        NativeModules.DevSettings.reload();
+      }, 4000);
+    }
   };
 
   if (hasPermission === null) {
@@ -55,15 +63,21 @@ export const QrScanner = () => {
 
 const styles = StyleSheet.create({
   absoluteFillObject: {
+    position: "absolute",
+    marginTop: "30%",
     width: "100%",
-    height: "90%",
+    height: "120%",
+    zIndex: 2,
   },
   container: {
+    position: "relative",
     width: "100%",
+    height: "100%",
   },
   loginButton: {
     width: "70%",
     marginLeft: "15%",
+    marginTop: 10,
     height: 40,
     backgroundColor: "#CBE7F6",
     alignItems: "center",

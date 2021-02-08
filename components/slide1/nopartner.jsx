@@ -21,10 +21,10 @@ const styles = StyleSheet.create({
   container: {
     width: "50%",
     alignItems: "center",
-    justifyContent: "space-between",
   },
   downContainer: {
-    marginBottom: 10,
+    position: "absolute",
+    marginTop: "30%",
   },
   qrcode: {
     width: 30,
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   scanner: {
     width: "100%",
     height: "50%",
-    backgroundColor: "yellow",
   },
   text: {
     padding: 10,
