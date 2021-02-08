@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { QrScanner } from "./qrscanner";
 import QRCode from "react-native-qrcode-generator";
 
-export const Nopartner = () => {
+export const Nopartner = ({ uid }) => {
   return (
     <View style={styles.container}>
       <View style={styles.scanner}>
@@ -11,7 +11,7 @@ export const Nopartner = () => {
       </View>
       <View style={styles.downContainer}>
         <Text style={styles.text}>Your ID Code</Text>
-        <QRCode value={"1234"} bgColor="black" fgColor="white" />
+        <QRCode value={uid} bgColor="black" fgColor="white" />
       </View>
     </View>
   );

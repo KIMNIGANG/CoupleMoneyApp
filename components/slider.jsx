@@ -14,6 +14,7 @@ export const Slider = ({
   partner,
   left,
   partnerLeft,
+  uid,
 }) => {
   return (
     <Swiper
@@ -31,6 +32,7 @@ export const Slider = ({
           handleDelete={handleDelete}
           handleAdd={handleAdd}
           partner={partner}
+          uid={uid}
         />
       </View>
       <View style={styles.slide2}></View>

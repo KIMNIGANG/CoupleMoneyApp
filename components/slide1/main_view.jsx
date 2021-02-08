@@ -16,6 +16,7 @@ export const MainView = ({
   partner,
   left,
   partnerLeft,
+  uid,
 }) => {
   return (
     <View style={styles.slide1}>
@@ -41,7 +42,7 @@ export const MainView = ({
               ))}
             </ScrollView>
           )}
-          {!partner && <Nopartner />}
+          {!partner && <Nopartner uid={uid} />}
         </View>
       </View>
       <Editor style={styles.editor} handleAdd={handleAdd} />

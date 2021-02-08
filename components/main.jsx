@@ -6,6 +6,7 @@ import { getPartnerList } from "../service/get_partnerList";
 import { Slider } from "./slider";
 import { removeFromList } from "../service/removeFromList";
 import { AdMobBanner } from "expo-ads-admob";
+import firebase from "firebase";
 
 const adUnitID = Platform.select({
   ios: "ca-app-pub-3940256099942544/2934735716",
@@ -13,6 +14,7 @@ const adUnitID = Platform.select({
 });
 
 export const Main = () => {
+  const uid = firebase.auth().currentUser.uid;
   const [turn1, setTurn1] = useState(0);
   const [turn2, setTurn2] = useState(0);
   const [sum1, setSum1] = useState(0);
@@ -74,6 +76,7 @@ export const Main = () => {
           handleAdd={handleAdd}
           turn1={turn1}
           turn2={turn2}
+          uid={uid}
         />
       </View>
     </View>
