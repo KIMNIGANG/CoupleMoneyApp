@@ -22,7 +22,7 @@ export const getPartnerList = (
       } else {
         console.log(doc.data().partnerUid);
         const partnerUid = doc.data().partnerUid;
-        if (partnerUid == null) {
+        if (partnerUid == "") {
           setPartner(false); //파트너가 없다면 false설정
           return;
         } else {

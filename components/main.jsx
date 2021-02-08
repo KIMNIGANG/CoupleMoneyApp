@@ -5,7 +5,6 @@ import { getMoneyList } from "../service/get_moneyList";
 import { getPartnerList } from "../service/get_partnerList";
 import { Slider } from "./slider";
 import { removeFromList } from "../service/removeFromList";
-
 import { AdMobBanner } from "expo-ads-admob";
 
 const adUnitID = Platform.select({

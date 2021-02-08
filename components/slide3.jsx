@@ -1,7 +1,41 @@
 import React from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import firebase from "firebase";
+
+const deletePartnerUid = () => {
+  firebase
+    .firestore()
+    .collection("users")
+    .doc(firebase.auth().currentUser.uid)
+    .get()
+    .then((doc) => {
+      if (!doc.exists) {
+        console.log("No such document!");
+      } else {
+        const partnerUid = doc.data().partnerUid;
+        if (partnerUid == null) {
+          return;
+        } else {
+          firebase
+            .firestore()
+            .collection("users")
+            .doc(partnerUid)
+            .get()
+            .then((doc) => {
+              if (!doc.exists) {
+                console.log("No such document!");
+              } else {
+                doc.data().partnerUid.update("");
+              }
+            });
+        }
+      }
+    })
+    .catch((err) => {
+      console.log("Error getting document", err);
+    });
+};
 
 export const Slide3 = () => {
   const signOut = () => {
@@ -17,15 +51,15 @@ export const Slide3 = () => {
   };
 
   const deleteAccount = () => {
-    // const user = firebase.auth().currentUser;
-    // user
-    //   .delete()
-    //   .then(function () {
-    //     // User deleted.
-    //   })
-    //   .catch(function (error) {
-    //     // An error happened.
-    //   });
+    const user = firebase.auth().currentUser;
+    user
+      .delete()
+      .then(function () {
+        deletePartnerUid;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
