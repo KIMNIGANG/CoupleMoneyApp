@@ -3,7 +3,7 @@ import firebase from "firebase";
 import "firebase/firestore";
 import uuid from "react-native-uuid";
 
-export const addToList = (money, category) => {
+export const addToList = (money, category, date) => {
   firebase
     .firestore()
     .collection("users")
@@ -23,6 +23,7 @@ export const addToList = (money, category) => {
             moneyList: firebase.firestore.FieldValue.arrayUnion({
               money,
               category,
+              date,
               key: uuid.v4(),
             }),
           });

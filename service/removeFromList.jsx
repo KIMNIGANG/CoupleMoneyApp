@@ -3,7 +3,7 @@ import firebase from "firebase";
 import "firebase/firestore";
 import uuid from "react-native-uuid";
 
-export const removeFromList = (money, key, category) => {
+export const removeFromList = (money, key, category, date) => {
   firebase
     .firestore()
     .collection("users")
@@ -22,6 +22,7 @@ export const removeFromList = (money, key, category) => {
             moneyList: firebase.firestore.FieldValue.arrayRemove({
               money: money,
               key: key,
+              date: date,
               category: category,
             }),
           });

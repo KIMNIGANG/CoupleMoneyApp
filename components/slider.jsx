@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
+import { Slide3 } from "./slide3";
 import Swiper from "react-native-swiper";
 import { MainView } from "./slide1/main_view";
 
@@ -32,12 +33,9 @@ export const Slider = ({
           partner={partner}
         />
       </View>
-      <View style={styles.slide2}>
-        <Text style={styles.text}>Beautiful</Text>
-      </View>
+      <View style={styles.slide2}></View>
       <View style={styles.slide3}>
-        <Text style={styles.text}>And simple</Text>
-        <Button title="test" />
+        <Slide3 />
       </View>
     </Swiper>
   );

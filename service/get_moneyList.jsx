@@ -20,6 +20,7 @@ export const getMoneyList = (setMoneyList, setSum, setTurn1, setLeft) => {
           list[i] = {
             money: doc.data().moneyList[i].money,
             key: doc.data().moneyList[i].key,
+            date: doc.data().moneyList[i].date,
             category: doc.data().moneyList[i].category,
           };
           sum += Number(doc.data().moneyList[i].money);

@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
     left: "50%",
     height: "100%",
     width: 1,
-    backgroundColor: "black",
+    backgroundColor: "#b8b6b6",
   },
 });

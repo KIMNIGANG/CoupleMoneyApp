@@ -37,7 +37,7 @@ export const List = ({ item, handleDelete }) => {
           <View style={styles.wall} />
         </View>
         <View style={styles.downContainer}>
-          <Text style={styles.date}>11/23</Text>
+          <Text style={styles.date}>{item.date}</Text>
           <TouchableOpacity //
             style={styles.deletebutton}
             onPress={onDelete}
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   wall: {
     height: 1,
     width: "113%",
-    backgroundColor: "grey",
+    backgroundColor: "#d5d5d5",
   },
   deletebutton: {
     marginRight: "5%",

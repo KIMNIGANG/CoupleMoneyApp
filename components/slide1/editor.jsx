@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
 import RNPickerSelect from "react-native-picker-select";
 import { addToList } from "../../service/addToList";
 
 export const Editor = ({ handleAdd }) => {
   const [money, setMoney] = useState();
   const [category, setCategory] = useState("etc");
+  const rightNow = new Date();
+  const date = rightNow.toISOString().slice(5, 10).replace(/-/g, "/");
 
   const submit = (value) => {
     if (value <= 0) {
       return;
     }
-    handleAdd(value, category);
-    addToList(value, category);
+    handleAdd(value, category, date);
+    addToList(value, category, date);
   };
 
   const onChanged = () => {
@@ -55,13 +56,12 @@ export const Editor = ({ handleAdd }) => {
             ]}
           />
         </View>
-        <Image source={require("../../img/calendar.png")} />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.textInput}
           placeholder="Money"
-          placeholderTextColor="#6168DB"
+          placeholderTextColor="grey"
           keyboardType="numeric"
           maxLength={10}
           onSubmitEditing={onChanged}
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
   },
   wall: {
     width: "100%",
-    height: 2,
-    backgroundColor: "black",
+    height: 1,
+    backgroundColor: "#b8b6b6",
   },
   inputContainer: {
     height: 50,
@@ -112,12 +112,13 @@ const styles = StyleSheet.create({
   textInput: {
     height: "100%",
     width: "100%",
-    borderWidth: 2,
+    borderWidth: 1,
+    borderColor: "#595959",
     fontSize: 17,
     paddingHorizontal: 10,
   },
   selector: {
-    width: "100%",
+    width: "79%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
@@ -170,5 +171,14 @@ const styles = StyleSheet.create({
         fontFamily: "serif",
       },
     }),
+  },
+  datepicker: {
+    width: "40%",
+    marginLeft: 10,
+  },
+  datePickerContainer: {
+    height: 30,
+    width: 30,
+    backgroundColor: "yellow",
   },
 });

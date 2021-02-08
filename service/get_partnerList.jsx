@@ -43,6 +43,7 @@ export const getPartnerList = (
                     money: doc.data().moneyList[i].money,
                     key: doc.data().moneyList[i].key,
                     category: doc.data().moneyList[i].category,
+                    date: doc.data().moneyList[i].date,
                   };
                   sum += Number(doc.data().moneyList[i].money);
                   if (i == doc.data().moneyList.length - 1) {

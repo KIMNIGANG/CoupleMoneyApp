@@ -29,8 +29,8 @@ export const Main = () => {
     getPartnerList(setUser2, setPartner, setUser2Sum, setTurn2, setPartnerLeft);
   }, []);
 
-  function handleAdd(money, category) {
-    setUser1([...user1, { money, category, key: uuid.v4() }]);
+  function handleAdd(money, category, date) {
+    setUser1([...user1, { money, category, date, key: uuid.v4() }]);
     const newSum = sum1 + Number(money);
     setSum1(newSum);
     if (Math.floor(newSum / 10000) != turn1) {
@@ -48,7 +48,12 @@ export const Main = () => {
     if (Math.floor(newSum / 10000) != turn1) {
       setTurn1(Math.floor(newSum / 10000));
     }
-    removeFromList(toDelete.money, toDelete.key, toDelete.category);
+    removeFromList(
+      toDelete.money,
+      toDelete.key,
+      toDelete.category,
+      toDelete.date
+    );
   }
 
   return (
@@ -79,7 +84,7 @@ export const Main = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#565656",
     alignItems: "center",
     justifyContent: "center",
   },
