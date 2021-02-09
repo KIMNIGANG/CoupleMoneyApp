@@ -36,7 +36,7 @@ export const Slider = ({
         />
       </View>
       <View style={styles.slide3}>
-        <Slide3 />
+        <Slide3 uid={uid} />
       </View>
     </Swiper>
   );
@@ -56,8 +56,6 @@ const styles = StyleSheet.create({
   },
   slide3: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#92BBD9",
   },
   text: {
