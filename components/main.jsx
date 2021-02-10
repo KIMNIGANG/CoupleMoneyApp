@@ -24,10 +24,18 @@ export const Main = () => {
   const [left, setLeft] = useState(0);
   const [partnerLeft, setPartnerLeft] = useState(0);
   const [partner, setPartner] = useState(true); //파트너의 유무
+  const [pUid, setPuid] = useState("");
 
   useEffect(() => {
     getMoneyList(setUser1, setSum1, setTurn1, setLeft);
-    getPartnerList(setUser2, setPartner, setUser2Sum, setTurn2, setPartnerLeft);
+    getPartnerList(
+      setUser2,
+      setPartner,
+      setUser2Sum,
+      setTurn2,
+      setPartnerLeft,
+      setPuid
+    );
   }, []);
 
   function handleAdd(money, category, date) {
@@ -77,6 +85,7 @@ export const Main = () => {
           turn1={turn1}
           turn2={turn2}
           uid={uid}
+          pUid={pUid}
         />
       </View>
     </View>

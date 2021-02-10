@@ -9,7 +9,8 @@ export const getPartnerList = (
   setPartner,
   setSum,
   setTurn2,
-  setPartnerLeft
+  setPartnerLeft,
+  setPuid
 ) => {
   firebase
     .firestore()
@@ -27,6 +28,7 @@ export const getPartnerList = (
           return;
         } else {
           setPartner(true); //있다면 true
+          setPuid(partnerUid);
           firebase
             .firestore()
             .collection("users")

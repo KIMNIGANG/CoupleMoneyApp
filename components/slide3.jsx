@@ -5,45 +5,12 @@ import firebase from "firebase";
 import QRCode from "react-native-qrcode-generator";
 import { useState } from "react/cjs/react.development";
 import { AdMobBanner } from "expo-ads-admob";
+import { deletePartnerUid } from "../service/deletePartnerUid";
 
 const adUnitID = Platform.select({
   ios: "ca-app-pub-3940256099942544/2934735716",
   android: "ca-app-pub-3940256099942544/6300978111",
 });
-
-const deletePartnerUid = () => {
-  firebase
-    .firestore()
-    .collection("users")
-    .doc(firebase.auth().currentUser.uid)
-    .get()
-    .then((doc) => {
-      if (!doc.exists) {
-        console.log("No such document!");
-      } else {
-        const partnerUid = doc.data().partnerUid;
-        if (partnerUid == null) {
-          return;
-        } else {
-          firebase
-            .firestore()
-            .collection("users")
-            .doc(partnerUid)
-            .get()
-            .then((doc) => {
-              if (!doc.exists) {
-                console.log("No such document!");
-              } else {
-                doc.data().partnerUid.update("");
-              }
-            });
-        }
-      }
-    })
-    .catch((err) => {
-      console.log("Error getting document", err);
-    });
-};
 
 const signOut = () => {
   firebase
@@ -57,19 +24,31 @@ const signOut = () => {
     });
 };
 
-const deleteAccount = () => {
+const deleteAccount = (pUid) => {
   const user = firebase.auth().currentUser;
-  user
-    .delete()
-    .then(function () {
-      deletePartnerUid;
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  if (pUid == "") {
+    setTimeout(() => {
+      user
+        .delete()
+        .then(function () {})
+        .catch(function (error) {
+          console.log(error);
+        });
+    }, 3500);
+  } else {
+    deletePartnerUid(pUid);
+    setTimeout(() => {
+      user
+        .delete()
+        .then(function () {})
+        .catch(function (error) {
+          console.log(error);
+        });
+    }, 3500);
+  }
 };
 
-export const Slide3 = ({ uid }) => {
+export const Slide3 = ({ uid, pUid }) => {
   const [signOutAsk, setSignOutAsk] = useState(false);
   const [deleteAsk, setDeleteAsk] = useState(false);
 
@@ -146,7 +125,7 @@ export const Slide3 = ({ uid }) => {
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => {
                     setDeleteAsk(!deleteAsk);
-                    deleteAccount();
+                    deleteAccount(pUid);
                   }}
                 >
                   <Text style={styles.textStyle}>Sure</Text>
