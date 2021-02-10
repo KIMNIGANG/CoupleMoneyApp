@@ -79,7 +79,7 @@ export const Editor = ({ handleAdd }) => {
         />
       </View>
       <TouchableOpacity onPress={onChanged} style={styles.loginButton}>
-        <Text style={styles.loginText}>Plus</Text>
+        <Text style={styles.loginText}>Add</Text>
       </TouchableOpacity>
     </View>
   );

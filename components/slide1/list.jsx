@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     borderWidth: 1,
     borderColor: "grey",
+    backgroundColor: "white",
     borderRadius: 2,
     padding: 13,
     paddingLeft: 10,
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
   wall: {
     height: 1,
     width: "113%",
-    backgroundColor: "#d5d5d5",
+    backgroundColor: "grey",
   },
   deletebutton: {
     marginRight: "5%",

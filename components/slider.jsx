@@ -49,15 +49,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "white",
   },
-  slide2: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#97CAE5",
-  },
   slide3: {
     flex: 1,
-    backgroundColor: "#92BBD9",
+    backgroundColor: "#efefef",
   },
   text: {
     color: "#fff",

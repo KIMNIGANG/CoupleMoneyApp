@@ -32,6 +32,13 @@ export const PartnerList = ({ item }) => {
         </View>
         <View style={styles.downContainer}>
           <Text style={styles.date}>11/23</Text>
+          <View style={styles.heightWall}></View>
+          <View style={styles.iconContainer}>
+            <Image
+              style={styles.logo}
+              source={require("../../img/iconsmall.png")}
+            />
+          </View>
         </View>
       </View>
     </View>
@@ -68,6 +75,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     borderWidth: 1,
     borderColor: "grey",
+    backgroundColor: "white",
     borderRadius: 2,
     padding: 13,
     paddingLeft: 10,
@@ -106,6 +114,18 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     marginRight: "6%",
     width: 27,
+    height: 27,
+  },
+  logo: {
+    position: "absolute",
+    top: "-73%",
+    width: 60,
+    height: 60,
+    right: 0,
+    resizeMode: "cover",
+  },
+  heightWall: {
+    backgroundColor: "transparent",
     height: 27,
   },
 });

@@ -5,9 +5,11 @@ export const ListHeader = ({ turn1, turn2, left, partnerLeft }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{turn1}</Text>
+      <View style={styles.subline} />
       <Text>{left}</Text>
       <View style={styles.line} />
       <Text style={styles.text2}>{turn2}</Text>
+      <View style={styles.subline} />
       <Text>{partnerLeft}</Text>
     </View>
   );
@@ -15,6 +17,7 @@ export const ListHeader = ({ turn1, turn2, left, partnerLeft }) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "white",
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
@@ -34,6 +37,11 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: "50%",
     height: "100%",
+    width: 0.5,
+    backgroundColor: "black",
+  },
+  subline: {
+    height: "50%",
     width: 1,
     backgroundColor: "#b8b6b6",
   },

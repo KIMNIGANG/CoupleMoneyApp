@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   listFlexContainer: {
     flex: 1,
     flexDirection: "row",
+    backgroundColor: "#fdf8ff",
   },
   userList: {
     width: "100%",

@@ -26,7 +26,10 @@ const signOut = () => {
 
 const deleteAccount = (pUid) => {
   const user = firebase.auth().currentUser;
-  if (pUid == "") {
+
+  if (pUid !== "") {
+    console.log(pUid);
+    deletePartnerUid(pUid);
     setTimeout(() => {
       user
         .delete()
@@ -36,7 +39,6 @@ const deleteAccount = (pUid) => {
         });
     }, 3500);
   } else {
-    deletePartnerUid(pUid);
     setTimeout(() => {
       user
         .delete()
@@ -51,16 +53,19 @@ const deleteAccount = (pUid) => {
 export const Slide3 = ({ uid, pUid }) => {
   const [signOutAsk, setSignOutAsk] = useState(false);
   const [deleteAsk, setDeleteAsk] = useState(false);
+  const [deletePartnerAsk, setDeletePartnerAsk] = useState(false);
 
   return (
     <View style={styles.container}>
       <View style={styles.upContainer}>
         <View style={styles.account}>
-          <Text style={styles.text}>Hello Kang</Text>
+          <Text style={styles.text}>
+            {"Welcome to DoubleMoneyBook.\nThe Best way to do Dutch treat"}
+          </Text>
         </View>
         <View style={styles.idCode}>
-          <Text style={styles.text}>Your ID Code</Text>
-          <QRCode value={uid} bgColor="black" fgColor="#CBE7F6" />
+          <QRCode value={uid} bgColor="black" fgColor="white" />
+          <Text style={styles.text}>Share Your ID Code</Text>
         </View>
       </View>
       <View style={styles.middleContainer}>
@@ -133,8 +138,42 @@ export const Slide3 = ({ uid, pUid }) => {
               </View>
             </View>
           </Modal>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={deletePartnerAsk}
+            onRequestClose={() => {
+              setDeleteAsk(!deletePartnerAsk);
+            }}
+          >
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <Text style={styles.modalText}>
+                  {"Delete your Partner\nYou Sure?"}
+                </Text>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setDeletePartnerAsk(!deletePartnerAsk)}
+                >
+                  <Text style={styles.textStyle}>No</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => {
+                    setDeletePartnerAsk(!deletePartnerAsk);
+                    if (pUid !== "") {
+                      deletePartnerUid(pUid);
+                    } else {
+                      return;
+                    }
+                  }}
+                >
+                  <Text style={styles.textStyle}>Sure</Text>
+                </Pressable>
+              </View>
+            </View>
+          </Modal>
         </View>
-
         <TouchableOpacity
           onPress={() => setSignOutAsk(true)}
           style={styles.loginButton}
@@ -147,6 +186,12 @@ export const Slide3 = ({ uid, pUid }) => {
         >
           <Text style={styles.loginText}>Delete Account</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setDeletePartnerAsk(true)}
+          style={styles.loginButton}
+        >
+          <Text style={styles.loginText}>Delete Partner</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -154,25 +199,28 @@ export const Slide3 = ({ uid, pUid }) => {
 
 const styles = StyleSheet.create({
   container: {
+    width: "100%",
     height: "100%",
     alignItems: "center",
-    justifyContent: "space-between",
   },
   upContainer: {
+    justifyContent: "center",
     width: "100%",
     height: "30%",
   },
   middleContainer: {
+    paddingTop: 15,
+    marginBottom: 15,
     height: "30%",
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
   downContainer: {
+    paddingTop: 20,
     alignItems: "center",
     width: "100%",
     height: "30%",
-    marginBottom: 30,
   },
   admob: {
     marginTop: 15,
@@ -184,9 +232,10 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 18,
     color: "black",
+    textAlign: "center",
     ...Platform.select({
       ios: {
-        fontSize: 18,
+        fontSize: 23,
         fontFamily: "Georgia",
       },
       android: {
@@ -201,13 +250,12 @@ const styles = StyleSheet.create({
   },
 
   loginButton: {
-    marginBottom: 10,
     width: 250,
+    margin: 5,
     height: 50,
-    backgroundColor: "#CBE7F6",
+    backgroundColor: "#ffc2c2",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: "5%",
   },
   loginText: {
     textAlign: "center",
@@ -269,9 +317,7 @@ const styles = StyleSheet.create({
   },
   idCode: {
     alignItems: "center",
-    marginBottom: 10,
-  },
-  account: {
-    height: "30%",
+    marginTop: "5%",
+    marginBottom: "-12%",
   },
 });
