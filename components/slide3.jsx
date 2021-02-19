@@ -6,10 +6,11 @@ import QRCode from "react-native-qrcode-generator";
 import { useState } from "react/cjs/react.development";
 import { AdMobBanner } from "expo-ads-admob";
 import { deletePartnerUid } from "../service/deletePartnerUid";
+import { NativeModules } from "react-native";
 
 const adUnitID = Platform.select({
-  ios: "ca-app-pub-3940256099942544/2934735716",
-  android: "ca-app-pub-3940256099942544/6300978111",
+  ios: "ca-app-pub-2841796582864445/6503681050",
+  android: "ca-app-pub-2841796582864445/3932514147",
 });
 
 const signOut = () => {
@@ -60,12 +61,12 @@ export const Slide3 = ({ uid, pUid }) => {
       <View style={styles.upContainer}>
         <View style={styles.account}>
           <Text style={styles.text}>
-            {"Welcome to DoubleMoneyBook.\nThe Best way to do Dutch treat"}
+            {"Welcome to CoupleMoneyApp.\nThe Best way to do Dutch treat"}
           </Text>
         </View>
         <View style={styles.idCode}>
           <QRCode value={uid} bgColor="black" fgColor="white" />
-          <Text style={styles.text}>Share Your ID Code</Text>
+          <Text style={styles.qrtext}>Share Your ID Code</Text>
         </View>
       </View>
       <View style={styles.middleContainer}>
@@ -88,7 +89,7 @@ export const Slide3 = ({ uid, pUid }) => {
           >
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
-                <Text style={styles.modalText}>You Sure?</Text>
+                <Text style={styles.modalText}>{"Sign Out\nYou Sure?"}</Text>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => setSignOutAsk(!signOutAsk)}
@@ -118,7 +119,7 @@ export const Slide3 = ({ uid, pUid }) => {
             <View style={styles.centeredView}>
               <View style={styles.modalView}>
                 <Text style={styles.modalText}>
-                  If you delete your Account, your data will lose. You Sure?
+                  {"If you delete your Account\nyour data will lose\nYou Sure?"}
                 </Text>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
@@ -162,7 +163,30 @@ export const Slide3 = ({ uid, pUid }) => {
                   onPress={() => {
                     setDeletePartnerAsk(!deletePartnerAsk);
                     if (pUid !== "") {
-                      deletePartnerUid(pUid);
+                      firebase
+                        .firestore()
+                        .collection("users")
+                        .doc(firebase.auth().currentUser.uid)
+                        .get()
+                        .then((doc) => {
+                          if (!doc.exists) {
+                            console.log("No such document!");
+                          } else {
+                            firebase
+                              .firestore()
+                              .collection("users")
+                              .doc(firebase.auth().currentUser.uid)
+                              .update({
+                                partnerUid: "",
+                              });
+                          }
+                        })
+                        .catch((err) => {
+                          console.log("Error getting document", err);
+                        });
+                      setTimeout(() => {
+                        NativeModules.DevSettings.reload();
+                      }, 3500);
                     } else {
                       return;
                     }
@@ -175,6 +199,12 @@ export const Slide3 = ({ uid, pUid }) => {
           </Modal>
         </View>
         <TouchableOpacity
+          onPress={() => setDeletePartnerAsk(true)}
+          style={styles.loginButton}
+        >
+          <Text style={styles.loginText}>Delete Partner</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           onPress={() => setSignOutAsk(true)}
           style={styles.loginButton}
         >
@@ -185,12 +215,6 @@ export const Slide3 = ({ uid, pUid }) => {
           style={styles.loginButton}
         >
           <Text style={styles.loginText}>Delete Account</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => setDeletePartnerAsk(true)}
-          style={styles.loginButton}
-        >
-          <Text style={styles.loginText}>Delete Partner</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -207,9 +231,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     height: "30%",
+    paddingBottom: 20,
   },
   middleContainer: {
-    paddingTop: 15,
+    marginTop: 15,
     marginBottom: 15,
     height: "30%",
     width: "100%",
@@ -229,6 +254,26 @@ const styles = StyleSheet.create({
     marginLeft: "29%",
   },
   text: {
+    padding: 10,
+    fontSize: 18,
+    color: "black",
+    textAlign: "center",
+    ...Platform.select({
+      ios: {
+        fontSize: 23,
+        fontFamily: "Georgia",
+      },
+      android: {
+        fontSize: 19,
+        fontFamily: "serif",
+      },
+      default: {
+        fontSize: 17,
+        fontFamily: "serif",
+      },
+    }),
+  },
+  qrtext: {
     padding: 10,
     fontSize: 18,
     color: "black",

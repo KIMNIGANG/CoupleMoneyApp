@@ -3,18 +3,22 @@
   "displayName": "CoupleMoneyApp",
   "expo": {
     "name": "CoupleMoneyApp",
+    "icon": "./img/icon.png",
     "android": {
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-2841796582864445~1350582836"
-      }
+      },
+      "package": "com.nigne.couplemoneyapp",
+      "versionCode": 1
     },
     "ios": {
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-2841796582864445~3374110944"
-      }
+      },
+      "bundleIdentifier": "com.nigne.couplemoneyapp",
+      "buildNumber": "1.0.0"
     },
     "slug": "CoupleMoneyApp",
-    "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"]
+    "version": "1.0.0"
   }
 }

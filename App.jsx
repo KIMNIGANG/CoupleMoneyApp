@@ -1,6 +1,6 @@
 import { StausBar } from "expo-status-bar";
 import React from "react";
-
+import "react-native-get-random-values";
 import * as firebase from "firebase";
 import firebaseConfig from "./service/firebase_config";
 if (firebase.apps.length === 0) {

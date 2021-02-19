@@ -9,8 +9,8 @@ import { AdMobBanner } from "expo-ads-admob";
 import firebase from "firebase";
 
 const adUnitID = Platform.select({
-  ios: "ca-app-pub-3940256099942544/2934735716",
-  android: "ca-app-pub-3940256099942544/6300978111",
+  ios: "ca-app-pub-2841796582864445/6503681050",
+  android: "ca-app-pub-2841796582864445/3932514147",
 });
 
 export const Main = () => {

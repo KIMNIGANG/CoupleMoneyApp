@@ -59,7 +59,7 @@ export const Login = ({ navigation }) => {
       </View>
       <View style={styles.footer}>
         <View style={styles.headMessage}>
-          <Text style={styles.headText}>Sign in to Double Money Book</Text>
+          <Text style={styles.headText}>Sign in to CoupleMoneyApp</Text>
         </View>
 
         <View style={styles.inputs}>

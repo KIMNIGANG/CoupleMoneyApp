@@ -21,12 +21,11 @@ export const QrScanner = () => {
     if (type < 256) {
       return;
     } else {
-      alert(type);
       addPartnerUid(data);
       setWantScan(false);
       setTimeout(() => {
         NativeModules.DevSettings.reload();
-      }, 4000);
+      }, 3500);
     }
   };
 
