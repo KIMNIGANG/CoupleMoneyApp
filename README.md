@@ -19,6 +19,6 @@ SignUpPage<br>
 MainPage<br>
 <img src="https://user-images.githubusercontent.com/54884167/108517904-530b0e00-730b-11eb-85b1-17e52f8bbb76.png" width="300"><br>
 <img src="https://user-images.githubusercontent.com/54884167/108518386-d75d9100-730b-11eb-92c6-cb00d84d3087.png" width="300"><br>
-When there is partner, than there will appear partner's list.<br>
+When there is partner, than there will appear partner's list.<br><br>
 SettingPage<br>
 <img src="https://user-images.githubusercontent.com/54884167/108518355-cd3b9280-730b-11eb-9572-76455d20dcec.png" width="300">
