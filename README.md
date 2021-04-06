@@ -3,7 +3,7 @@
 I used ReactNative and Firebase to make this App<br>
 
 This App is for couple to do dutch treat. <br>
-There is a Turn and it increase every 100000YEN.<br>
+There is a Turn and it increase every 10000YEN.<br>
 So when A's turn is 12 and B's turn is 11 than B should have to pay 10000YEN to get to turn 12. <br>
 Like this A and B don't have to think who paid more and who didn't paid. <br>
 <br>
